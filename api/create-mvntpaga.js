@@ -7,13 +7,16 @@ const {
 
 const PAYMENTS_FILE = "data/payments.json";
 
+const ACTIVATION_AMOUNT_KOBO = 1500000;
+const ACTIVATION_EXPIRY_MINUTES = 50;
+
 function send(res, status, data) {
   return res.status(status).json(data);
 }
 
 function makeReference() {
   return (
-    "lp_" +
+    "tv_" +
     Date.now() +
     "_" +
     crypto.randomBytes(5).toString("hex")
@@ -21,7 +24,7 @@ function makeReference() {
 }
 
 function makePaymentId() {
-  return "PAY-PAGA-" + crypto.randomBytes(12).toString("hex");
+  return "PAY-TUNEVA-" + crypto.randomBytes(12).toString("hex");
 }
 
 function makeStatusToken() {
@@ -36,14 +39,12 @@ function hashToken(token) {
 }
 
 module.exports = async function handler(req, res) {
-
-  /* =====================================================
-     CORS
-  ===================================================== */
-
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization"
+  );
   res.setHeader("Cache-Control", "no-store");
 
   if (req.method === "OPTIONS") {
@@ -58,15 +59,10 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-
-    /* ===================================================
-       MOVANTRA SECRET
-    =================================================== */
-
     const secretKey = process.env.MOVANTRA_SECRET_KEY;
 
     if (!secretKey) {
-      console.error("MOVANTRA_SECRET_KEY is not configured.");
+      console.error("[TUNEVA] MOVANTRA_SECRET_KEY missing.");
 
       return send(res, 500, {
         status: false,
@@ -74,94 +70,30 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    /* ===================================================
-       REQUEST BODY
-    =================================================== */
-
     const body = req.body || {};
 
-    const {
-      amount,
-      amount_kobo,
-      name,
-      customer_name,
-      email,
-      customer_email,
-      phone,
-      customer_phone,
-      expiry_minutes,
-      callback_url
-    } = body;
-
-    /* ===================================================
-       AMOUNT
-    =================================================== */
-
-    let finalAmountKobo;
-
-    if (amount_kobo !== undefined && amount_kobo !== null) {
-      finalAmountKobo = Number(amount_kobo);
-
-    } else if (amount !== undefined && amount !== null) {
-      const nairaAmount = Number(amount);
-
-      if (!Number.isFinite(nairaAmount) || nairaAmount <= 0) {
-        return send(res, 400, {
-          status: false,
-          message: "Invalid amount."
-        });
-      }
-
-      finalAmountKobo = Math.round(nairaAmount * 100);
-
-    } else {
-      return send(res, 400, {
-        status: false,
-        message: "amount or amount_kobo is required."
-      });
-    }
-
-    if (!Number.isSafeInteger(finalAmountKobo)) {
-      return send(res, 400, {
-        status: false,
-        message: "Amount must be a valid integer."
-      });
-    }
-
-    if (finalAmountKobo < 10000) {
-      return send(res, 400, {
-        status: false,
-        code: "amount_too_low",
-        message: "Minimum amount is NGN 100."
-      });
-    }
-
-    /* ===================================================
-       CUSTOMER DETAILS
-    =================================================== */
-
-    const finalCustomerName = String(
-      customer_name || name || ""
+    const customerName = String(
+      body.customer_name || body.name || ""
     ).trim();
 
-    const finalCustomerEmail = String(
-      customer_email || email || ""
+    const customerEmail = String(
+      body.customer_email || body.email || ""
     ).trim().toLowerCase();
 
-    const finalCustomerPhone = String(
-      customer_phone || phone || ""
+    const customerPhone = String(
+      body.customer_phone || body.phone || ""
     ).trim();
 
-    if (!finalCustomerName) {
+    if (!customerName) {
       return send(res, 400, {
         status: false,
-        message: "customer_name is required."
+        message: "Customer name is required."
       });
     }
 
     if (
-      !finalCustomerEmail ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(finalCustomerEmail)
+      !customerEmail ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)
     ) {
       return send(res, 400, {
         status: false,
@@ -169,68 +101,42 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    /* ===================================================
-       UNIQUE PROVIDER REFERENCE
-    =================================================== */
-
-    const finalReference = makeReference();
-
-    /* ===================================================
-       EXPIRY
-    =================================================== */
-
-    let finalExpiry = 30;
+    // The activation fee is fixed. Never trust a browser-supplied amount.
+    const suppliedAmount = body.amount_kobo !== undefined
+      ? Number(body.amount_kobo)
+      : body.amount !== undefined
+        ? Math.round(Number(body.amount) * 100)
+        : ACTIVATION_AMOUNT_KOBO;
 
     if (
-      expiry_minutes !== undefined &&
-      expiry_minutes !== null &&
-      expiry_minutes !== ""
-    ) {
-      finalExpiry = Number(expiry_minutes);
-    }
-
-    if (
-      !Number.isInteger(finalExpiry) ||
-      finalExpiry < 5 ||
-      finalExpiry > 60
+      !Number.isSafeInteger(suppliedAmount) ||
+      suppliedAmount !== ACTIVATION_AMOUNT_KOBO
     ) {
       return send(res, 400, {
         status: false,
-        message: "expiry_minutes must be between 5 and 60."
+        code: "invalid_activation_amount",
+        message: "Tuneva activation costs exactly NGN 15,000."
       });
     }
 
-    /* ===================================================
-       MOVANTRA REQUEST
-    =================================================== */
+    const reference = makeReference();
 
     const movantraBody = {
-      amount_kobo: finalAmountKobo,
-      customer_name: finalCustomerName,
-      reference: finalReference,
-      expiry_minutes: finalExpiry
+      amount_kobo: ACTIVATION_AMOUNT_KOBO,
+      customer_name: customerName,
+      customer_email: customerEmail,
+      reference,
+      expiry_minutes: ACTIVATION_EXPIRY_MINUTES
     };
 
-    if (finalCustomerEmail) {
-      movantraBody.customer_email = finalCustomerEmail;
+    if (customerPhone) {
+      movantraBody.customer_phone = customerPhone;
     }
 
-    if (finalCustomerPhone) {
-      movantraBody.customer_phone = finalCustomerPhone;
+    // Configure this only if Movantra requires a separate callback URL.
+    if (process.env.PAGA_CALLBACK_URL) {
+      movantraBody.callback_url = process.env.PAGA_CALLBACK_URL;
     }
-
-    const finalCallbackUrl =
-      process.env.PAGA_CALLBACK_URL ||
-      callback_url ||
-      "";
-
-    if (finalCallbackUrl) {
-      movantraBody.callback_url = finalCallbackUrl;
-    }
-
-    /* ===================================================
-       CALL MOVANTRA
-    =================================================== */
 
     const providerResponse = await fetch(
       "https://api.movantrapay.com/v1/paga/dynamic-accounts",
@@ -248,73 +154,50 @@ module.exports = async function handler(req, res) {
 
     try {
       result = await providerResponse.json();
-    } catch (error) {
-      console.error("Invalid Movantra response:", error);
-
+    } catch (_) {
       return send(res, 502, {
         status: false,
         message: "Invalid response from payment provider."
       });
     }
 
-    /* ===================================================
-       MOVANTRA ERROR
-    =================================================== */
-
     if (
       !providerResponse.ok ||
       !result ||
       result.status !== true
     ) {
-      console.error("Movantra Paga error:", result);
+      console.error("[TUNEVA] Movantra account error:", result);
 
-      return send(
-        res,
-        providerResponse.status >= 400 &&
-        providerResponse.status < 600
-          ? providerResponse.status
-          : 502,
-        {
-          status: false,
-          code: result?.code || "paga_account_error",
-          message:
-            result?.message ||
-            "Unable to create Paga dynamic account."
-        }
-      );
+      return send(res, 502, {
+        status: false,
+        code: result?.code || "paga_account_error",
+        message:
+          result?.message ||
+          "Unable to create your payment account."
+      });
     }
-
-    /* ===================================================
-       VALIDATE ACCOUNT RESPONSE
-    =================================================== */
 
     if (
       !result.account_number ||
       !result.account_name ||
       !result.bank_name
     ) {
-      console.error("Incomplete Paga account response:", result);
-
       return send(res, 502, {
         status: false,
-        message: "Paga returned an incomplete account."
+        message: "Payment provider returned incomplete account details."
       });
     }
 
     const providerReference = String(
-      result.reference || finalReference
+      result.reference || reference
     ).trim();
 
     if (!providerReference) {
       return send(res, 502, {
         status: false,
-        message: "Paga returned an invalid payment reference."
+        message: "Invalid payment reference."
       });
     }
-
-    /* ===================================================
-       CREATE SECURE PAYMENT TRACKING
-    =================================================== */
 
     const paymentId = makePaymentId();
     const statusToken = makeStatusToken();
@@ -322,27 +205,38 @@ module.exports = async function handler(req, res) {
 
     const paymentRecord = {
       id: paymentId,
-      customerName: finalCustomerName,
-      email: finalCustomerEmail,
-      phone: finalCustomerPhone,
-      amount: finalAmountKobo / 100,
-      amountKobo: finalAmountKobo,
+
+      customerName,
+      email: customerEmail,
+      phone: customerPhone,
+
+      amount: ACTIVATION_AMOUNT_KOBO / 100,
+      amountKobo: ACTIVATION_AMOUNT_KOBO,
+
       method: "paga",
-      reference: providerReference,
       provider: "movantra",
+
+      reference: providerReference,
       status: "pending",
+
       statusTokenHash: hashToken(statusToken),
+
       createdAt,
       processedAt: null,
+
+      activation: true,
+      activationExpiresAt:
+        result.expires_at ||
+        new Date(
+          Date.now() +
+          ACTIVATION_EXPIRY_MINUTES * 60 * 1000
+        ).toISOString(),
+
       pofPass: null,
       pofGeneratedAt: null,
       pofUsed: false,
       pofUsedAt: null
     };
-
-    /* ===================================================
-       SAVE PAYMENT RECORD
-    =================================================== */
 
     const paymentFile = await readJSON(
       PAYMENTS_FILE,
@@ -355,17 +249,12 @@ module.exports = async function handler(req, res) {
       ? paymentData.payments
       : [];
 
-    const duplicateReference = payments.some(
-      payment =>
-        String(payment.reference || "") === providerReference
-    );
-
-    if (duplicateReference) {
-      console.error(
-        "[LIORA PAGA] Duplicate provider reference:",
-        providerReference
-      );
-
+    if (
+      payments.some(
+        item =>
+          String(item.reference || "") === providerReference
+      )
+    ) {
       return send(res, 409, {
         status: false,
         message: "Payment reference already exists."
@@ -381,53 +270,39 @@ module.exports = async function handler(req, res) {
       paymentFile.sha
     );
 
-    /* ===================================================
-       LOG ACCOUNT CREATION
-    =================================================== */
-
-    console.log("[LIORA PAGA ACCOUNT CREATED]", {
+    console.log("[TUNEVA] Activation account created:", {
       paymentId,
       reference: providerReference,
-      amount: finalAmountKobo,
-      email: finalCustomerEmail,
-      account_number: result.account_number,
-      bank_name: result.bank_name
+      amount: ACTIVATION_AMOUNT_KOBO,
+      email: customerEmail
     });
-
-    /* ===================================================
-       RETURN TO CARRD
-    =================================================== */
 
     return send(res, 200, {
       status: true,
 
       paymentId,
       statusToken,
-
       reference: providerReference,
 
       account_number: result.account_number,
       account_name: result.account_name,
       bank_name: result.bank_name,
 
-      amount_kobo:
-        result.amount_kobo || finalAmountKobo,
-
+      amount_kobo: ACTIVATION_AMOUNT_KOBO,
       fee_kobo: result.fee_kobo ?? null,
       net_kobo: result.net_kobo ?? null,
 
       status_text: result.status_text || "pending",
-      expires_at: result.expires_at || null,
+      expires_at: paymentRecord.activationExpiresAt,
       mode: result.mode || null
     });
 
   } catch (error) {
-
-    console.error("[LIORA PAGA BACKEND]", error);
+    console.error("[TUNEVA] Payment creation error:", error);
 
     return send(res, 500, {
       status: false,
-      message: "Unable to create Paga payment account."
+      message: "Unable to create your payment account."
     });
   }
 };
