@@ -93,6 +93,7 @@ function publicAccount(account) {
     tapPoints: account.tapPoints,
     tapCount: account.tapCount,
     videoEarnings: account.videoEarnings,
+    claimedVideos: account.claimedVideos,
     history: account.history
   };
 }
