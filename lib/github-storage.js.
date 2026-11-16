@@ -22,25 +22,30 @@ function getHeaders(token) {
   };
 }
 
-function fileURL(owner, repo, path, branch) {
+function getFileURL(owner, repo, path) {
   const safePath = path
     .split("/")
     .map(encodeURIComponent)
     .join("/");
 
-  return `${API}/repos/${owner}/${repo}/contents/${safePath}?ref=${encodeURIComponent(branch)}`;
+  return `${API}/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${safePath}`;
 }
 
 async function readJSON(path, fallback = {}) {
   const { owner, repo, token, branch } = getConfig();
 
-  const response = await fetch(
-    fileURL(owner, repo, path, branch),
-    { headers: getHeaders(token) }
-  );
+  const url =
+    `${getFileURL(owner, repo, path)}?ref=${encodeURIComponent(branch)}`;
+
+  const response = await fetch(url, {
+    headers: getHeaders(token)
+  });
 
   if (response.status === 404) {
-    return fallback;
+    return {
+      data: fallback,
+      sha: null
+    };
   }
 
   if (!response.ok) {
@@ -51,41 +56,52 @@ async function readJSON(path, fallback = {}) {
 
   const file = await response.json();
 
-  if (!file.content) {
-    throw new Error(`GitHub returned no content for ${path}`);
+  if (!file.content || !file.sha) {
+    throw new Error(`GitHub returned incomplete file data: ${path}`);
   }
 
   const decoded = Buffer.from(
-    file.content.replace(/\n/g, ""),
+    file.content.replace(/\s/g, ""),
     "base64"
   ).toString("utf8");
 
-  return JSON.parse(decoded);
+  let data;
+
+  try {
+    data = JSON.parse(decoded);
+  } catch (_) {
+    throw new Error(`Invalid JSON stored in ${path}`);
+  }
+
+  return {
+    data,
+    sha: file.sha
+  };
 }
 
-async function writeJSON(path, data) {
+async function writeJSON(path, data, existingSHA = null) {
   const { owner, repo, token, branch } = getConfig();
 
-  const url = fileURL(owner, repo, path, branch)
-    .split("?")[0];
-
+  const url = getFileURL(owner, repo, path);
   const headers = getHeaders(token);
 
-  // Get the existing file SHA if the file already exists.
-  const existingResponse = await fetch(
-    `${url}?ref=${encodeURIComponent(branch)}`,
-    { headers }
-  );
+  let sha = existingSHA;
 
-  let sha;
-
-  if (existingResponse.ok) {
-    const existing = await existingResponse.json();
-    sha = existing.sha;
-  } else if (existingResponse.status !== 404) {
-    throw new Error(
-      `GitHub lookup failed (${existingResponse.status}): ${await existingResponse.text()}`
+  // If no SHA was supplied, check whether the file already exists.
+  if (!sha) {
+    const lookup = await fetch(
+      `${url}?ref=${encodeURIComponent(branch)}`,
+      { headers }
     );
+
+    if (lookup.ok) {
+      const existing = await lookup.json();
+      sha = existing.sha;
+    } else if (lookup.status !== 404) {
+      throw new Error(
+        `GitHub file lookup failed (${lookup.status}): ${await lookup.text()}`
+      );
+    }
   }
 
   const content = Buffer.from(
@@ -118,7 +134,12 @@ async function writeJSON(path, data) {
     );
   }
 
-  return await response.json();
+  const result = await response.json();
+
+  return {
+    data,
+    sha: result.content?.sha || null
+  };
 }
 
 module.exports = {
