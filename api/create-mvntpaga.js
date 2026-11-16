@@ -1,11 +1,19 @@
-
 const crypto = require("crypto");
+
 const {
   readJSON,
   writeJSON
 } = require("../lib/github-storage");
 
+const {
+  normalizeUsername,
+  normalizeEmail,
+  validUsername,
+  hashPassword
+} = require("../lib/auth");
+
 const PAYMENTS_FILE = "data/payments.json";
+const USERS_FILE = "data/users.json";
 
 const ACTIVATION_AMOUNT_KOBO = 30000;
 const ACTIVATION_EXPIRY_MINUTES = 50;
@@ -16,9 +24,7 @@ function send(res, status, data) {
 
 function makeReference() {
   return (
-    "tv_" +
-    Date.now() +
-    "_" +
+    "tv_" + Date.now() + "_" +
     crypto.randomBytes(5).toString("hex")
   ).slice(0, 32);
 }
@@ -32,8 +38,7 @@ function makeStatusToken() {
 }
 
 function hashToken(token) {
-  return crypto
-    .createHash("sha256")
+  return crypto.createHash("sha256")
     .update(String(token))
     .digest("hex");
 }
@@ -62,8 +67,6 @@ module.exports = async function handler(req, res) {
     const secretKey = process.env.MOVANTRA_SECRET_KEY;
 
     if (!secretKey) {
-      console.error("[TUNEVA] MOVANTRA_SECRET_KEY missing.");
-
       return send(res, 500, {
         status: false,
         message: "Payment service is not configured."
@@ -76,28 +79,42 @@ module.exports = async function handler(req, res) {
       body.customer_name || body.name || ""
     ).trim();
 
-    const customerEmail = String(
-      body.customer_email || body.email || ""
-    ).trim().toLowerCase();
+    const customerEmail = normalizeEmail(
+      body.customer_email || body.email
+    );
 
     const customerPhone = String(
       body.customer_phone || body.phone || ""
     ).trim();
 
-    if (!customerName) {
+    const username = normalizeUsername(body.username);
+    const password = String(body.password || "");
+
+    if (!customerName || !customerEmail) {
       return send(res, 400, {
         status: false,
-        message: "Customer name is required."
+        message: "Name and email are required."
       });
     }
 
-    if (
-      !customerEmail ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)
-    ) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
       return send(res, 400, {
         status: false,
-        message: "A valid customer email is required."
+        message: "Enter a valid email address."
+      });
+    }
+
+    if (!validUsername(username)) {
+      return send(res, 400, {
+        status: false,
+        message: "Username must be 3–20 characters using letters, numbers or underscores."
+      });
+    }
+
+    if (password.length < 8 || password.length > 128) {
+      return send(res, 400, {
+        status: false,
+        message: "Password must be at least 8 characters."
       });
     }
 
@@ -117,6 +134,45 @@ module.exports = async function handler(req, res) {
         message: "Tuneva test activation costs exactly NGN 300."
       });
     }
+
+    const [userFile, paymentFile] = await Promise.all([
+      readJSON(USERS_FILE, { users: [] }),
+      readJSON(PAYMENTS_FILE, { payments: [] })
+    ]);
+
+    const users = Array.isArray(userFile.data?.users)
+      ? userFile.data.users
+      : [];
+
+    const payments = Array.isArray(paymentFile.data?.payments)
+      ? paymentFile.data.payments
+      : [];
+
+    const usernameExists = users.some(user =>
+      normalizeUsername(user.username) === username
+    );
+
+    const emailExists = users.some(user =>
+      normalizeEmail(user.email) === customerEmail
+    );
+
+    const pendingExists = payments.some(payment =>
+      payment.status === "pending" &&
+      (
+        normalizeUsername(payment.username) === username ||
+        normalizeEmail(payment.email) === customerEmail
+      )
+    );
+
+    if (usernameExists || emailExists || pendingExists) {
+      return send(res, 409, {
+        status: false,
+        code: "account_exists",
+        message: "This username or email is already registered or awaiting activation."
+      });
+    }
+
+    const passwordHash = await hashPassword(password);
 
     const reference = makeReference();
 
@@ -159,18 +215,12 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    if (
-      !providerResponse.ok ||
-      !result ||
-      result.status !== true
-    ) {
+    if (!providerResponse.ok || !result || result.status !== true) {
       console.error("[TUNEVA] Movantra account error:", result);
 
       return send(res, 502, {
         status: false,
-        code: result?.code || "paga_account_error",
-        message:
-          result?.message ||
+        message: result?.message ||
           "Unable to create your payment account."
       });
     }
@@ -204,8 +254,10 @@ module.exports = async function handler(req, res) {
     const paymentRecord = {
       id: paymentId,
       customerName,
+      username,
       email: customerEmail,
       phone: customerPhone,
+      passwordHash,
 
       amount: ACTIVATION_AMOUNT_KOBO / 100,
       amountKobo: ACTIVATION_AMOUNT_KOBO,
@@ -215,7 +267,6 @@ module.exports = async function handler(req, res) {
 
       reference: providerReference,
       status: "pending",
-
       statusTokenHash: hashToken(statusToken),
 
       createdAt,
@@ -235,21 +286,9 @@ module.exports = async function handler(req, res) {
       pofUsedAt: null
     };
 
-    const paymentFile = await readJSON(
-      PAYMENTS_FILE,
-      { payments: [] }
-    );
-
-    const paymentData = paymentFile.data || {};
-
-    const payments = Array.isArray(paymentData.payments)
-      ? paymentData.payments
-      : [];
-
     if (
-      payments.some(
-        item =>
-          String(item.reference || "") === providerReference
+      payments.some(item =>
+        String(item.reference || "") === providerReference
       )
     ) {
       return send(res, 409, {
@@ -261,33 +300,23 @@ module.exports = async function handler(req, res) {
     await writeJSON(
       PAYMENTS_FILE,
       {
-        ...paymentData,
+        ...(paymentFile.data || {}),
         payments: [paymentRecord, ...payments]
       },
       paymentFile.sha
     );
-
-    console.log("[TUNEVA] Activation account created:", {
-      paymentId,
-      reference: providerReference,
-      amount: ACTIVATION_AMOUNT_KOBO,
-      email: customerEmail
-    });
 
     return send(res, 200, {
       status: true,
       paymentId,
       statusToken,
       reference: providerReference,
-
       account_number: result.account_number,
       account_name: result.account_name,
       bank_name: result.bank_name,
-
       amount_kobo: ACTIVATION_AMOUNT_KOBO,
       fee_kobo: result.fee_kobo ?? null,
       net_kobo: result.net_kobo ?? null,
-
       status_text: result.status_text || "pending",
       expires_at: paymentRecord.activationExpiresAt,
       mode: result.mode || null
