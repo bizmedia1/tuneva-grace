@@ -13,7 +13,7 @@ const {
 const USERS_FILE = "data/users.json";
 const EARNINGS_FILE = "data/earnings.json";
 
-const INITIAL_BALANCE = 374820;
+const INITIAL_BALANCE = 0;
 
 const TAP_POINTS = 350;
 const TAP_REWARD = 100;
