@@ -20,7 +20,8 @@ const FILES = {
 
 const TIME_ZONE = "Africa/Lagos";
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const TUNEVA_ACTIVATION_KOBO = 1500000;
+const TUNEVA_ACTIVATION_KOBO = 
+  30000;
 
 /* =====================================================
    RESPONSE
