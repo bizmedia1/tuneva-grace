@@ -137,10 +137,15 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const usersResult = await readJSON(USERS_FILE, []);
-    const users = Array.isArray(usersResult.data)
-      ? usersResult.data
-      : [];
+    const usersResult = await readJSON(USERS_FILE, {
+  users: []
+});
+
+const users = Array.isArray(usersResult.data)
+  ? usersResult.data
+  : Array.isArray(usersResult.data?.users)
+    ? usersResult.data.users
+    : [];
 
     const user = users.find(function (item) {
       return item.id === session.sub && item.status === "active";
