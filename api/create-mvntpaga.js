@@ -7,7 +7,7 @@ const {
 
 const PAYMENTS_FILE = "data/payments.json";
 
-const ACTIVATION_AMOUNT_KOBO = 1500000;
+const ACTIVATION_AMOUNT_KOBO = 30000;
 const ACTIVATION_EXPIRY_MINUTES = 50;
 
 function send(res, status, data) {
@@ -101,7 +101,6 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // The activation fee is fixed. Never trust a browser-supplied amount.
     const suppliedAmount = body.amount_kobo !== undefined
       ? Number(body.amount_kobo)
       : body.amount !== undefined
@@ -115,7 +114,7 @@ module.exports = async function handler(req, res) {
       return send(res, 400, {
         status: false,
         code: "invalid_activation_amount",
-        message: "Tuneva activation costs exactly NGN 15,000."
+        message: "Tuneva test activation costs exactly NGN 300."
       });
     }
 
@@ -133,7 +132,6 @@ module.exports = async function handler(req, res) {
       movantraBody.customer_phone = customerPhone;
     }
 
-    // Configure this only if Movantra requires a separate callback URL.
     if (process.env.PAGA_CALLBACK_URL) {
       movantraBody.callback_url = process.env.PAGA_CALLBACK_URL;
     }
@@ -205,7 +203,6 @@ module.exports = async function handler(req, res) {
 
     const paymentRecord = {
       id: paymentId,
-
       customerName,
       email: customerEmail,
       phone: customerPhone,
@@ -279,7 +276,6 @@ module.exports = async function handler(req, res) {
 
     return send(res, 200, {
       status: true,
-
       paymentId,
       statusToken,
       reference: providerReference,
