@@ -15,13 +15,13 @@ module.exports.config = {
 const FILES = {
   payments: "data/payments.json",
   balance: "data/balance.json",
-  transactions: "data/transactions.json"
+  transactions: "data/transactions.json",
+  users: "data/users.json"
 };
 
 const TIME_ZONE = "Africa/Lagos";
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const TUNEVA_ACTIVATION_KOBO = 
-  30000;
+const TUNEVA_ACTIVATION_KOBO = 30000;
 
 /* =====================================================
    RESPONSE
@@ -89,6 +89,18 @@ function verifySignature(rawBody, signature, secret) {
 
 function paymentId(payment) {
   return String(payment.id || payment.reference || "");
+}
+
+/* =====================================================
+   NORMALIZE USER DETAILS
+===================================================== */
+
+function normalizeUsername(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function normalizeEmail(value) {
+  return String(value || "").trim().toLowerCase();
 }
 
 /* =====================================================
@@ -203,6 +215,142 @@ function generateUniquePofPass(payment, processedAt, payments) {
   }
 
   throw new Error("Unable to generate a unique POF pass.");
+}
+
+/* =====================================================
+   CREATE VERIFIED USER ACCOUNT
+===================================================== */
+
+async function createVerifiedUser(payment, id) {
+  const username = normalizeUsername(payment.username);
+  const email = normalizeEmail(payment.email);
+
+  if (!username || !email) {
+    throw new Error(
+      "Verified payment is missing username or email."
+    );
+  }
+
+  const usersFile = await readJSON(FILES.users, {
+    users: []
+  });
+
+  const usersData = usersFile.data || {};
+
+  const users = Array.isArray(usersData.users)
+    ? usersData.users
+    : [];
+
+  // Make webhook retries safe.
+  const existingUser = users.find(user =>
+    String(user.paymentId || "") === id
+  );
+
+  if (existingUser) {
+    return existingUser;
+  }
+
+  const conflictingUser = users.find(user =>
+    normalizeUsername(user.username) === username ||
+    normalizeEmail(user.email) === email
+  );
+
+  if (conflictingUser) {
+    throw new Error(
+      "Username or email already belongs to another account."
+    );
+  }
+
+  if (!payment.passwordHash) {
+    throw new Error(
+      "Password hash is missing from the pending payment."
+    );
+  }
+
+  const activatedAt =
+    payment.processedAt || new Date().toISOString();
+
+  const user = {
+    id: "USER-" + crypto.randomBytes(12).toString("hex"),
+
+    fullName: payment.customerName || "",
+    username,
+    email,
+    phone: payment.phone || "",
+
+    passwordHash: payment.passwordHash,
+
+    status: "active",
+
+    paymentId: id,
+
+    createdAt: activatedAt,
+    activatedAt
+  };
+
+  await writeJSON(
+    FILES.users,
+    {
+      ...usersData,
+      users: [user, ...users]
+    },
+    usersFile.sha
+  );
+
+  console.log(
+    "[TUNEVA] Verified user account created:",
+    username
+  );
+
+  return user;
+}
+
+/* =====================================================
+   REMOVE TEMPORARY PASSWORD HASH
+===================================================== */
+
+async function removeTemporaryPasswordHash(id) {
+  const paymentFile = await readJSON(FILES.payments, {
+    payments: []
+  });
+
+  const paymentData = paymentFile.data || {};
+
+  const payments = Array.isArray(paymentData.payments)
+    ? paymentData.payments
+    : [];
+
+  const index = payments.findIndex(payment =>
+    String(payment.id || "") === id
+  );
+
+  if (index === -1) {
+    throw new Error(
+      "Payment record not found during password cleanup."
+    );
+  }
+
+  if (!payments[index].passwordHash) {
+    return;
+  }
+
+  const cleanedPayment = {
+    ...payments[index]
+  };
+
+  delete cleanedPayment.passwordHash;
+
+  const updatedPayments = [...payments];
+  updatedPayments[index] = cleanedPayment;
+
+  await writeJSON(
+    FILES.payments,
+    {
+      ...paymentData,
+      payments: updatedPayments
+    },
+    paymentFile.sha
+  );
 }
 
 /* =====================================================
@@ -497,6 +645,16 @@ module.exports = async function handler(req, res) {
       approvedPayment = payment;
     }
 
+    const id = paymentId(approvedPayment);
+
+    /* CREATE USER AFTER VERIFIED PAYMENT */
+
+    if (approvedPayment.activation === true) {
+      await createVerifiedUser(approvedPayment, id);
+
+      await removeTemporaryPasswordHash(id);
+    }
+
     /* RECORD SUCCESSFUL TRANSACTION ONCE */
 
     const transactionFile = await readJSON(
@@ -511,8 +669,6 @@ module.exports = async function handler(req, res) {
     )
       ? transactionData.transactions
       : [];
-
-    const id = paymentId(approvedPayment);
 
     const transactionExists = transactions.some(
       transaction =>
@@ -613,7 +769,8 @@ module.exports = async function handler(req, res) {
       event: eventName,
       reference,
       paymentId: id,
-      pofGenerated: Boolean(approvedPayment.pofPass)
+      pofGenerated: Boolean(approvedPayment.pofPass),
+      userCreated: approvedPayment.activation === true
     });
 
   } catch (error) {
