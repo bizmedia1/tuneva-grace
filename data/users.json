@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5bc1f524cd6bc56ca52bcd7c",
+      "fullName": "Ifemeje cherechi thersa",
+      "username": "the_real_cherry_girl",
+      "email": "theresacherechi@gmail.com",
+      "phone": "09130739971",
+      "passwordHash": "558bb11e42a9b78a39bedec1c326704a:9235be2ec4b0387ac338fe8fdb4cc27fc5d346facc414b63081b3cbd362a26f3a2a2b0218d335700337453263e2e4c97254c94ced3861b787daaa800a7d5b123",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c4f2a78e38c4966054d7af48",
+      "createdAt": "2026-11-17T19:03:42.916Z",
+      "activatedAt": "2026-11-17T19:03:42.916Z"
+    },
+    {
       "id": "USER-761073a38720f9c8eb0af8f3",
       "fullName": "Chidera Daniel",
       "username": "girlbossdera",
