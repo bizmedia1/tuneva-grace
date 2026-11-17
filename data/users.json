@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-56a993dccf7e2b3b62226069",
+      "fullName": "Queen",
+      "username": "queen1",
+      "email": "queen12@gmail.com",
+      "phone": "09064392714",
+      "passwordHash": "664afa210af9a946182a3a60a8b0221a:2d8c526908d4faf8182da1630477bbc001ec76f0fffc50f39df0f8195c9ed713fb4dac00874a6caa8fe896ae23e800840559c71a119e36d09c0c932dc976a320",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f43a23daff6c935068cfdc23",
+      "createdAt": "2026-11-17T16:44:09.264Z",
+      "activatedAt": "2026-11-17T16:44:09.264Z"
+    },
+    {
       "id": "USER-817c3e636b391e2c6e502773",
       "fullName": "Emmanuel",
       "username": "emma",
