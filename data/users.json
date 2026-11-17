@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-822d0f1fab179859f9ffa7a3",
+      "fullName": "Blessing",
+      "username": "bless",
+      "email": "blessed@gmail.com",
+      "phone": "09122334567",
+      "passwordHash": "25d3cdd86e710f3dbb80bc9eafc2bfee:3ab33baa40e47b48fa729152c9723f4a727a35cb5d10951ed855c53a503f1ce757b00d38ea3713589f3cb3d47ffb0f1c95b947165be3a99f0ea14986e072bc37",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7491f87434ba335e4bedd43b",
+      "createdAt": "2026-11-17T06:57:49.478Z",
+      "activatedAt": "2026-11-17T06:57:49.478Z"
+    },
+    {
       "id": "USER-8dfe18e893efcd21af2bf544",
       "fullName": "Omolewa",
       "username": "bizmedia",
