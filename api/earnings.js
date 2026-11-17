@@ -18,8 +18,29 @@ const INITIAL_BALANCE = 0;
 const TAP_POINTS = 350;
 const TAP_REWARD = 100;
 
-const VIDEO_ID = "seyi-vibes";
 const VIDEO_REWARD = 1750;
+
+const VIDEO_REWARDS = {
+  "seyi-vibes": {
+    title: "Seyi Vibes",
+    reward: VIDEO_REWARD
+  },
+
+  "bigger-escapes": {
+    title: "For Bigger Escapes",
+    reward: VIDEO_REWARD
+  },
+
+  "bigger-fun": {
+    title: "For Bigger Fun",
+    reward: VIDEO_REWARD
+  },
+
+  "bigger-joyrides": {
+    title: "For Bigger Joyrides",
+    reward: VIDEO_REWARD
+  }
+};
 
 function send(res, status, data) {
   return res.status(status).json(data);
@@ -58,6 +79,7 @@ function newAccount() {
 
 function normalizeAccount(account) {
   const fresh = newAccount();
+
   const saved = account && typeof account === "object"
     ? account
     : {};
@@ -65,12 +87,15 @@ function normalizeAccount(account) {
   return {
     ...fresh,
     ...saved,
+
     claimedVideos: Array.isArray(saved.claimedVideos)
       ? saved.claimedVideos
       : [],
+
     processedEvents: Array.isArray(saved.processedEvents)
       ? saved.processedEvents
       : [],
+
     history: Array.isArray(saved.history)
       ? saved.history
       : []
@@ -139,14 +164,14 @@ module.exports = async function handler(req, res) {
     }
 
     const usersResult = await readJSON(USERS_FILE, {
-  users: []
-});
+      users: []
+    });
 
-const users = Array.isArray(usersResult.data)
-  ? usersResult.data
-  : Array.isArray(usersResult.data?.users)
-    ? usersResult.data.users
-    : [];
+    const users = Array.isArray(usersResult.data)
+      ? usersResult.data
+      : Array.isArray(usersResult.data?.users)
+        ? usersResult.data.users
+        : [];
 
     const user = users.find(function (item) {
       return item.id === session.sub && item.status === "active";
@@ -183,6 +208,8 @@ const users = Array.isArray(usersResult.data)
 
     resetDailyIfNeeded(account);
 
+    // GET ACCOUNT EARNINGS
+
     if (req.method === "GET") {
       database.users[user.id] = account;
 
@@ -198,7 +225,10 @@ const users = Array.isArray(usersResult.data)
       });
     }
 
+    // POST EARNINGS ACTION
+
     const body = req.body || {};
+
     const action = String(body.action || "");
     const eventId = String(body.eventId || "");
 
@@ -213,7 +243,8 @@ const users = Array.isArray(usersResult.data)
       });
     }
 
-    // Prevent duplicate rewards when a request is retried.
+    // PREVENT DUPLICATE EVENTS
+
     if (account.processedEvents.includes(eventId)) {
       return send(res, 200, {
         ok: true,
@@ -222,10 +253,11 @@ const users = Array.isArray(usersResult.data)
       });
     }
 
+    // TAP REWARDS
+
     if (action === "tap") {
       const now = Date.now();
 
-      // Basic server-side protection against rapid automated requests.
       if (now - Number(account.lastTapAt || 0) < 200) {
         return send(res, 429, {
           ok: false,
@@ -234,8 +266,10 @@ const users = Array.isArray(usersResult.data)
       }
 
       account.lastTapAt = now;
+
       account.tapPoints += TAP_POINTS;
       account.tapCount += 1;
+
       account.balance += TAP_REWARD;
       account.todayEarnings += TAP_REWARD;
 
@@ -248,10 +282,16 @@ const users = Array.isArray(usersResult.data)
         currency: "NGN"
       });
 
-    } else if (action === "video") {
+    }
+
+    // VIDEO REWARDS
+
+    else if (action === "video") {
       const videoId = String(body.videoId || "");
 
-      if (videoId !== VIDEO_ID) {
+      const video = VIDEO_REWARDS[videoId];
+
+      if (!video) {
         return send(res, 400, {
           ok: false,
           message: "Unknown video reward."
@@ -265,34 +305,45 @@ const users = Array.isArray(usersResult.data)
         });
       }
 
+      // Record the claimed video.
+
       account.claimedVideos.push(videoId);
-      account.videoEarnings += VIDEO_REWARD;
-      account.balance += VIDEO_REWARD;
-      account.todayEarnings += VIDEO_REWARD;
+
+      // Add the reward.
+
+      account.videoEarnings += video.reward;
+      account.balance += video.reward;
+      account.todayEarnings += video.reward;
+
+      // Record the correct video title.
 
       account.history.unshift({
         id: eventId,
         title: "Video Rewards",
-        subtitle: "Seyi Vibes",
-        amount: VIDEO_REWARD,
+        subtitle: video.title,
+        amount: video.reward,
         date: new Date().toISOString(),
         currency: "NGN"
       });
 
-    } else {
+    }
+
+    else {
       return send(res, 400, {
         ok: false,
         message: "Invalid earnings action."
       });
     }
 
+    // SAVE PROCESSED EVENT
+
     account.processedEvents.push(eventId);
 
-    // Keep the JSON file compact.
     account.processedEvents =
       account.processedEvents.slice(-1000);
 
-    account.history = account.history.slice(0, 500);
+    account.history =
+      account.history.slice(0, 500);
 
     database.users[user.id] = account;
 
