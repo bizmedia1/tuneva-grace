@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-817c3e636b391e2c6e502773",
+      "fullName": "Emmanuel",
+      "username": "emma",
+      "email": "bestcoachgrace@gmail.com",
+      "phone": "09133240936",
+      "passwordHash": "127b60f2063a0d921787e4166c97d748:19899946fd4ba1a60508368f57e1f101984277c946d439432c013ee6d1455ec336692e15530444addf3ac6f83cabb1fb2a6ba17aaf9215edfbda45678354141e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-eddb45aaa84c8319293ad313",
+      "createdAt": "2026-11-17T07:23:32.100Z",
+      "activatedAt": "2026-11-17T07:23:32.100Z"
+    },
+    {
       "id": "USER-c8a307e990120754410f32b4",
       "fullName": "Glory",
       "username": "mike",
