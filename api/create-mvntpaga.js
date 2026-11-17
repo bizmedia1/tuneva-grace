@@ -15,7 +15,7 @@ const {
 const PAYMENTS_FILE = "data/payments.json";
 const USERS_FILE = "data/users.json";
 
-const ACTIVATION_AMOUNT_KOBO = 30000;
+const ACTIVATION_AMOUNT_KOBO = 530000;
 const ACTIVATION_EXPIRY_MINUTES = 50;
 
 function send(res, status, data) {
