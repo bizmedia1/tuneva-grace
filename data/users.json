@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-c3b42daa35a259f51a5c73c3",
+      "fullName": "Okafor  francis",
+      "username": "frank1",
+      "email": "francispromise92@gmail.com",
+      "phone": "09011086359",
+      "passwordHash": "4c59fe20866dbf6050b79484a2ba53ef:5b2848355b2aba1dd35b692d05cbb4b9f739ac41d2943d281ac4668020d2da88a71d72ca7ea823dad68519eb4d9d61baf0795a656ce3ec196f7af37cd1d0fe3c",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-76a0696967d614f127fd98ee",
+      "createdAt": "2026-11-17T21:51:40.920Z",
+      "activatedAt": "2026-11-17T21:51:40.920Z"
+    },
+    {
       "id": "USER-0577df4f12cdea75404eec0b",
       "fullName": "Kute Godwill",
       "username": "kuzzy",
