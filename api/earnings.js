@@ -17,6 +17,7 @@ const INITIAL_BALANCE = 0;
 
 const TAP_POINTS = 350;
 const TAP_REWARD = 100;
+const DAILY_TAP_LIMIT = 3000;
 
 const VIDEO_REWARD = 1750;
 
@@ -67,8 +68,13 @@ function newAccount() {
     balance: INITIAL_BALANCE,
     todayDate: todayInNigeria(),
     todayEarnings: 0,
+
     tapPoints: 0,
     tapCount: 0,
+
+    tapDailyPoints: 0,
+    tapDailyEarnings: 0,
+
     videoEarnings: 0,
     claimedVideos: [],
     processedEvents: [],
@@ -108,6 +114,9 @@ function resetDailyIfNeeded(account) {
   if (account.todayDate !== today) {
     account.todayDate = today;
     account.todayEarnings = 0;
+
+    account.tapDailyPoints = 0;
+    account.tapDailyEarnings = 0;
   }
 }
 
@@ -115,8 +124,16 @@ function publicAccount(account) {
   return {
     balance: account.balance,
     todayEarnings: account.todayEarnings,
+
     tapPoints: account.tapPoints,
     tapCount: account.tapCount,
+
+    tapDailyPoints: account.tapDailyPoints,
+    tapDailyEarnings: account.tapDailyEarnings,
+
+    tapLimitReached:
+      account.tapDailyEarnings >= DAILY_TAP_LIMIT,
+
     videoEarnings: account.videoEarnings,
     claimedVideos: account.claimedVideos,
     history: account.history
@@ -256,6 +273,20 @@ module.exports = async function handler(req, res) {
     // TAP REWARDS
 
     if (action === "tap") {
+      // ENFORCE DAILY TAP EARNINGS LIMIT
+
+      if (
+        account.tapDailyEarnings + TAP_REWARD >
+        DAILY_TAP_LIMIT
+      ) {
+        return send(res, 200, {
+          ok: true,
+          limitReached: true,
+          message: "You have reached your daily Tap Tap earnings limit of ₦3,000.",
+          earnings: publicAccount(account)
+        });
+      }
+
       const now = Date.now();
 
       if (now - Number(account.lastTapAt || 0) < 200) {
@@ -270,6 +301,9 @@ module.exports = async function handler(req, res) {
       account.tapPoints += TAP_POINTS;
       account.tapCount += 1;
 
+      account.tapDailyPoints += TAP_POINTS;
+      account.tapDailyEarnings += TAP_REWARD;
+
       account.balance += TAP_REWARD;
       account.todayEarnings += TAP_REWARD;
 
@@ -281,7 +315,6 @@ module.exports = async function handler(req, res) {
         date: new Date().toISOString(),
         currency: "NGN"
       });
-
     }
 
     // VIDEO REWARDS
@@ -325,7 +358,6 @@ module.exports = async function handler(req, res) {
         date: new Date().toISOString(),
         currency: "NGN"
       });
-
     }
 
     else {
