@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-dfc0d50fb597f77779a719ab",
+      "fullName": "Kafilat Yunus",
+      "username": "kaffybabie",
+      "email": "ayinkekafilat213@gmail.com",
+      "phone": "08130528130",
+      "passwordHash": "9ce0f0c5c4eaeb19331dd98835381823:6270d3e7b3b69030fed86af91bc31f024b253f0592b84e491bc1e4210a51d1d991475945b5a86a504ed28533a0c9f7c070d3187bdf133dc1d14d3c391ec33cbe",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f3db03ff5a6404720031b855",
+      "createdAt": "2026-11-17T18:39:17.806Z",
+      "activatedAt": "2026-11-17T18:39:17.806Z"
+    },
+    {
       "id": "USER-56a993dccf7e2b3b62226069",
       "fullName": "Queen",
       "username": "queen1",
