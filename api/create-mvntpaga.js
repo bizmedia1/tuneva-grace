@@ -1,3 +1,4 @@
+
 const crypto = require("crypto");
 
 const {
@@ -131,7 +132,7 @@ module.exports = async function handler(req, res) {
       return send(res, 400, {
         status: false,
         code: "invalid_activation_amount",
-        message: "Tuneva test activation costs exactly NGN 300."
+        message: "Tuneva activation costs exactly NGN 5,300."
       });
     }
 
