@@ -1,3 +1,4 @@
+
 const {
   readJSON
 } = require("../lib/github-storage");
@@ -6,7 +7,6 @@ const {
   normalizeUsername,
   normalizeEmail,
   verifyPassword,
-  createSessionToken,
   setSessionCookie,
   setCors
 } = require("../lib/auth");
@@ -89,9 +89,8 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    const token = createSessionToken(user);
-
-    setSessionCookie(res, token);
+    // Create and set the session cookie using the user object.
+    setSessionCookie(res, user);
 
     return send(res, 200, {
       ok: true,
