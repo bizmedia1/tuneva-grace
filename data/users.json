@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e0619168fe3dc4109e1741ff",
+      "fullName": "Augustine",
+      "username": "janet",
+      "email": "chinenyeaugustine70@gmail.com",
+      "phone": "08145431962",
+      "passwordHash": "fd206442ddef5876e57afc0306bdc25c:3dc617c788110a00e54f383a595ac75ff2be949b3389903b1642dba61164bb75bbfe4dc1abedfb17d2098bb8247a58627a14f3735dc9936883c1a934892640bb",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-9b28357f89a85713342a275b",
+      "createdAt": "2026-11-17T20:57:21.775Z",
+      "activatedAt": "2026-11-17T20:57:21.775Z"
+    },
+    {
       "id": "USER-aaffecf788b7d8e8bd4b8add",
       "fullName": "Attah ife",
       "username": "clare",
