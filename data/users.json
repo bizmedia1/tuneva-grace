@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-aaffecf788b7d8e8bd4b8add",
+      "fullName": "Attah ife",
+      "username": "clare",
+      "email": "ifechukwuclare20@gmail.com",
+      "phone": "07063111043",
+      "passwordHash": "2b718a601b1a59ee0d3968236b3240a2:84061c93c3c5ccb4cb4e63fae130ef44e306c51ab6ebef10f2e3889f2b935938402e80f90c9aa1d2cbbfa37cb5613b74fc79457c308c0a5e48393e4db7166151",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c6880e2b9ccd7f48de2b4994",
+      "createdAt": "2026-11-17T19:45:42.072Z",
+      "activatedAt": "2026-11-17T19:45:42.072Z"
+    },
+    {
       "id": "USER-dcfb58e92687f4591783f33b",
       "fullName": "Glory Maurice Elijah",
       "username": "beauty",
