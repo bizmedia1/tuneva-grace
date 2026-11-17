@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d843a1318e798309129a737e",
+      "fullName": "Elizabeth Oluwaferanmi",
+      "username": "oluwasemilore",
+      "email": "oluwaferanmielizabeth67@gmail.com",
+      "phone": "08063603607",
+      "passwordHash": "fc6ed9d4ee8855c63666b3ddf70236f0:23909d778143a176d95c29f753339c7cf3d361b06994c1c6e010a2ba47fe10db2dda27d762af6af2b7d1d9d152edc04bc92c94c26e55da3307f409dbf4c7df9d",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-b3834fe724420d18138d8028",
+      "createdAt": "2026-11-17T18:39:40.656Z",
+      "activatedAt": "2026-11-17T18:39:40.656Z"
+    },
+    {
       "id": "USER-dfc0d50fb597f77779a719ab",
       "fullName": "Kafilat Yunus",
       "username": "kaffybabie",
