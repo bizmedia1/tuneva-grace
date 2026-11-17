@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-0577df4f12cdea75404eec0b",
+      "fullName": "Kute Godwill",
+      "username": "kuzzy",
+      "email": "kutegodwill@gmail.com",
+      "phone": "08143581026",
+      "passwordHash": "e05c80b7e49af5ce70ae0fca94909271:c276beaac3a2d7de5bd5d8684ba66ae8b1b53ffd92dd43f021562505417fd326c648bb3edadf6070468911256786c4c57a3e4b4bf7fd0081ed0662ce123b53bd",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-9102da32ae46a7b36eab291a",
+      "createdAt": "2026-11-17T21:04:50.119Z",
+      "activatedAt": "2026-11-17T21:04:50.119Z"
+    },
+    {
       "id": "USER-e0619168fe3dc4109e1741ff",
       "fullName": "Augustine",
       "username": "janet",
