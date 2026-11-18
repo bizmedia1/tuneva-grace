@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d084eebde0aa835c70c6c9fc",
+      "fullName": "Adeola Seriki",
+      "username": "adeola",
+      "email": "serikiadeola09@gmail.com",
+      "phone": "08089628934",
+      "passwordHash": "5a8caf8706ec3f915e38b97b00f30ff0:e0ef3d97043bf66dcadb526e2a61db26f4faca01a559ed497ee7b41e134fb6a5121cca4ce44a81430ebc0907d29a05f264fe75a6bf6bfc5131648d4e06a0b440",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-964fe0d53ec7ecca75c5c9e1",
+      "createdAt": "2026-11-18T12:23:27.200Z",
+      "activatedAt": "2026-11-18T12:23:27.200Z"
+    },
+    {
       "id": "USER-e701515e1f47cedafb70763d",
       "fullName": "Marvellousgeorge",
       "username": "marvellousgeorge",
