@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-fabd0d6d2ce4e45fcc507f7c",
+      "fullName": "Emmy Emily",
+      "username": "emily159",
+      "email": "emmyemily159@gmail.com",
+      "phone": "09162998023",
+      "passwordHash": "8a107a914b7623d1b443f82144ba05ed:e7b51aad0a67fef9d44fd5ae1b8bf06fcfa659287b71eaa3f256d42dc7748319705f8702ad40a0c5f2a7b4f58b3fc3ac01183325ad3cd95e009c17981ba3f9e1",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-2946e39b947e4b745a66ad28",
+      "createdAt": "2026-11-18T08:37:06.409Z",
+      "activatedAt": "2026-11-18T08:37:06.409Z"
+    },
+    {
       "id": "USER-354946a13aea7f8098a1fa6f",
       "fullName": "Ifeanyi",
       "username": "ifeanyi123",
