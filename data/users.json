@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e701515e1f47cedafb70763d",
+      "fullName": "Marvellousgeorge",
+      "username": "marvellousgeorge",
+      "email": "marvellousgeorge@gmail.com",
+      "phone": "08104839869",
+      "passwordHash": "e3f8d47589c857fc8c3a4371a958e727:ebfdf40c15a066a58203722e83df2d57f575698836ae30390109f0e3228b5438aac326f6c20af76fd9d3fa0f8573862091b52c3d8b529d1de5037554b8668ccc",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c3c8a0c23a8704ec5db48d11",
+      "createdAt": "2026-11-18T09:22:01.142Z",
+      "activatedAt": "2026-11-18T09:22:01.142Z"
+    },
+    {
       "id": "USER-3c944e94b25412f51f2a9313",
       "fullName": "Leah",
       "username": "leah1",
