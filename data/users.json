@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-62cf6b0bfc11918dcdd72989",
+      "fullName": "Daniel Ambuley Felix",
+      "username": "danielambuleyfelix",
+      "email": "danielambuleyfelix@gmail.com",
+      "phone": "08164577195",
+      "passwordHash": "8163db899a97b8464cc9f93984917450:04c469c31bdde6ec903440051f4a1c279cb245bb551250053f00da63ae2de27a4bc80ffca02184555defa773fc4aa258ca90f7be37a19957d95ab7e787ea4dd8",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-87224c49dbd14181a30ab534",
+      "createdAt": "2026-11-18T07:01:17.816Z",
+      "activatedAt": "2026-11-18T07:01:17.816Z"
+    },
+    {
       "id": "USER-13b65b737b6b93ba469d3060",
       "fullName": "Godwinjames",
       "username": "franciss0001",
