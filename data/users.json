@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-6f0693e99c0b1339ccd300a8",
+      "fullName": "Ukwa Immaculate Chisom",
+      "username": "sommie",
+      "email": "immaculatechisomukwa@gmail.com",
+      "phone": "7079710316",
+      "passwordHash": "001657be0c21c2826f56037efd9f7adb:240033dddd7fa48bde0800c5bbfb25783910bee6b5319a8217d8ef3d86b2fddda4df30ef7475547e50b6354f0ddaf2a250e59c454730cbc0bf2c8f0c9fca663b",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-52826534e5cc7870e9b6369a",
+      "createdAt": "2026-11-18T15:27:45.186Z",
+      "activatedAt": "2026-11-18T15:27:45.186Z"
+    },
+    {
       "id": "USER-96717e94932a7ae2137c4201",
       "fullName": "Ajibade",
       "username": "ajibade",
