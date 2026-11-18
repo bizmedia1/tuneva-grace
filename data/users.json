@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-3c944e94b25412f51f2a9313",
+      "fullName": "Leah",
+      "username": "leah1",
+      "email": "joneskingjames@gmail.com",
+      "phone": "07075111740",
+      "passwordHash": "97cbd06848b89ff6bde6592af88bfb30:8936ffa277d3d3c9b573dec4be071bf4c71de3c9e4c0d3308a8a266e405537b9031fde1221cbcd4bbe339971a83312dafc3425dad56e494fb4388dcba733f53a",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-026c1e8f256a597594e0aae7",
+      "createdAt": "2026-11-18T09:16:37.807Z",
+      "activatedAt": "2026-11-18T09:16:37.807Z"
+    },
+    {
       "id": "USER-fabd0d6d2ce4e45fcc507f7c",
       "fullName": "Emmy Emily",
       "username": "emily159",
