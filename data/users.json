@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-354946a13aea7f8098a1fa6f",
+      "fullName": "Ifeanyi",
+      "username": "ifeanyi123",
+      "email": "oliviaworld97@gmail.com",
+      "phone": "08067547205",
+      "passwordHash": "75ef17e536afc35c40122dcc46c094c9:e658f4caab027c14347f8934532b7b90b5bb26d99c66b9642d89bc119d50849b82c91f13eec2b94e68e7a9ff75b7b84cab24be0881cb357b320498a272c24f19",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-5817ce570584e183b6a25b82",
+      "createdAt": "2026-11-18T08:26:57.087Z",
+      "activatedAt": "2026-11-18T08:26:57.087Z"
+    },
+    {
       "id": "USER-010ebd4e2253f5f1e585f8b9",
       "fullName": "Gine Prise",
       "username": "james",
