@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-010ebd4e2253f5f1e585f8b9",
+      "fullName": "Gine Prise",
+      "username": "james",
+      "email": "gineprise7@gmail.com",
+      "phone": "09040432564",
+      "passwordHash": "48f52145c6d542675138acaa466f0f97:fdfa670ff565d2fbd9158ddc6d22a6f3143563e032d3ca5b210b48a582c185410a54f5290a5af9c4a7e80aca61565bdbead0de1670d80c042b4c208d714a0ade",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-6cadec3a2063dd44e2635aa0",
+      "createdAt": "2026-11-18T08:12:55.385Z",
+      "activatedAt": "2026-11-18T08:12:55.385Z"
+    },
+    {
       "id": "USER-ac3879360eafe966943c0ba2",
       "fullName": "Franca Abiola",
       "username": "franca",
