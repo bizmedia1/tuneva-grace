@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-ac3879360eafe966943c0ba2",
+      "fullName": "Franca Abiola",
+      "username": "franca",
+      "email": "francaabiola@gmail.com",
+      "phone": "09061889967",
+      "passwordHash": "05456fc91a90e641200cb10c2255b643:04c525ddd8e417a85ec124e59bfc103c8c0aec0b15e0e292bb216cc501e44aae744fec36d4e3282cee863fce62ab62e043d91da26b956ba2faf02abf048d9201",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7d79b3b1a28f795c397f2d05",
+      "createdAt": "2026-11-18T07:24:08.693Z",
+      "activatedAt": "2026-11-18T07:24:08.693Z"
+    },
+    {
       "id": "USER-3d95f8440591f22fed2e2c6d",
       "fullName": "Afrik",
       "username": "afrik1",
