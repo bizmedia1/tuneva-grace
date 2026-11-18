@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-96717e94932a7ae2137c4201",
+      "fullName": "Ajibade",
+      "username": "ajibade",
+      "email": "ajibade@gmail.com",
+      "phone": "09052367894",
+      "passwordHash": "ede819bad5af8c2758af2a41f7a6e28e:33ee88442e6eb6bd32a0507cd6bfdaf2d5f9d0e37f1dbc951833b2e96728d3133e1569ff8b1970d6bc79ff66c5e04196b44a1eda5d9138488b26b163c934a419",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-caf16f2582bee05066ae10ab",
+      "createdAt": "2026-11-18T14:29:21.941Z",
+      "activatedAt": "2026-11-18T14:29:21.941Z"
+    },
+    {
       "id": "USER-d084eebde0aa835c70c6c9fc",
       "fullName": "Adeola Seriki",
       "username": "adeola",
