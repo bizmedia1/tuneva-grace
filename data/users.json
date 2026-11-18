@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-31158ce27d96a9989526d31c",
+      "fullName": "Blessing",
+      "username": "blessing2",
+      "email": "veronicablessing018@gmail.com",
+      "phone": "09025388373",
+      "passwordHash": "d76b80c1b70d28d92a5c77f634c5105f:37168b19a6bf9588716f402b013a85d6719381fc4344ff15262f051bec2178c2939d54cbcf50f626d3678b981f953b9524cf62bdaf6bb18b1ceab64c3c0e3f43",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1462d8d3f0ec8b964917e797",
+      "createdAt": "2026-11-18T18:14:36.575Z",
+      "activatedAt": "2026-11-18T18:14:36.575Z"
+    },
+    {
       "id": "USER-fd81b678173dd664d9cf7e94",
       "fullName": "Igweblossom31@gmail.com",
       "username": "blossom",
