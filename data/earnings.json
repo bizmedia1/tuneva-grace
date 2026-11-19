@@ -17630,13 +17630,13 @@
       "lastTapAt": 1795106046205
     },
     "USER-ff58d5129407e81b7dd5daed": {
-      "balance": 4450,
+      "balance": 4550,
       "todayDate": "2026-11-19",
-      "todayEarnings": 4450,
-      "tapPoints": 9450,
-      "tapCount": 27,
-      "tapDailyPoints": 9450,
-      "tapDailyEarnings": 2700,
+      "todayEarnings": 4550,
+      "tapPoints": 9800,
+      "tapCount": 28,
+      "tapDailyPoints": 9800,
+      "tapDailyEarnings": 2800,
       "videoEarnings": 1750,
       "claimedVideos": [
         "bigger-escapes"
@@ -17669,9 +17669,18 @@
         "867217d5-2cd9-4225-970a-dfee41e18db2",
         "8eb1b7de-6f61-4414-97f6-6d5be67eb90e",
         "8f3041c7-6d21-4543-bfba-5273de0c902c",
-        "3412f137-c0f5-4955-98a9-5b157d928474"
+        "3412f137-c0f5-4955-98a9-5b157d928474",
+        "55ae2021-f093-4d74-94e2-8eee3b2e1f91"
       ],
       "history": [
+        {
+          "id": "55ae2021-f093-4d74-94e2-8eee3b2e1f91",
+          "title": "Tap Rewards",
+          "subtitle": "Tap Tap",
+          "amount": 100,
+          "date": "2026-11-19T17:05:06.668Z",
+          "currency": "NGN"
+        },
         {
           "id": "3412f137-c0f5-4955-98a9-5b157d928474",
           "title": "Tap Rewards",
@@ -17897,7 +17906,7 @@
           "currency": "NGN"
         }
       ],
-      "lastTapAt": 1795107904266
+      "lastTapAt": 1795107906668
     }
   }
 }
