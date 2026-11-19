@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-fcbc7314c7c0dcaec36811fa",
+      "fullName": "Simon Benjamin",
+      "username": "benzolee29",
+      "email": "sb8278514@gmail.com",
+      "phone": "07059364396",
+      "passwordHash": "559ca75d2551ac504308ca62cbd33fa8:e8b03a9a5df9cd389e09f9ca95d0fa7696aa307fc9ef9f13a478da7afb71c8186a03d221dfa19509c43136e29a081890cbd271ca27c25f62e74e6f611c739ed2",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-9dfe3afc74740bf1465d6bb6",
+      "createdAt": "2026-11-19T16:00:07.695Z",
+      "activatedAt": "2026-11-19T16:00:07.695Z"
+    },
+    {
       "id": "USER-e52902bf243f7283dddf5272",
       "fullName": "Gideon Angosei",
       "username": "giddosky4g",
