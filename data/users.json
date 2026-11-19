@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-f87a5c2625358c6c8f1e1500",
+      "fullName": "Prince Bulle",
+      "username": "bullet45",
+      "email": "princegehgeh@gmail.co",
+      "phone": "09158613015",
+      "passwordHash": "b17962df0918618ad385a3cbfa477fa7:15cd0933bf004376b811bb6f160909b775e04c47a327a2ac4de3ce5e502acf8ab284a7b5a0f01dcce99337897b2767ab9f5f92a8561fd5cbac5f31fe01bea39a",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-25bb7d058d7b67264c4ccdc7",
+      "createdAt": "2026-11-19T20:35:28.658Z",
+      "activatedAt": "2026-11-19T20:35:28.658Z"
+    },
+    {
       "id": "USER-f9434b18e2a68cc499d06eda",
       "fullName": "Ayomide 1",
       "username": "ayomide",
