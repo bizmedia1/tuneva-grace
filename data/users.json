@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e56611b2e1b8aee599e02f67",
+      "fullName": "David",
+      "username": "david1",
+      "email": "davidogunyolemi@gmail.com",
+      "phone": "09155578420",
+      "passwordHash": "0f67faf61c1f5793215a7a2464124706:0c82e2b6dafe0968d7929d0301c9069eeb8de0eb55158db44cf5dde4391c0cc275be008cbadc542c5b88053c5f9c6f2d8f115acbfc0100c83ee37cb2ca91b11c",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-467372f854cc87caaa696155",
+      "createdAt": "2026-11-19T11:44:35.950Z",
+      "activatedAt": "2026-11-19T11:44:35.950Z"
+    },
+    {
       "id": "USER-7a62cee6c0bb1b0feff4b4bd",
       "fullName": "victor",
       "username": "dimz",
