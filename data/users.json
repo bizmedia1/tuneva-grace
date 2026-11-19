@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-517c3d14cec9b9eb3ff7b94f",
+      "fullName": "Ajo sumaila",
+      "username": "sumaila",
+      "email": "ppprmillions@gmail.com",
+      "phone": "08072186169",
+      "passwordHash": "d48b9a09e7982a5e51fa19e9668d0e34:7caabd5a410fea4b7a6bc879ede706966ce55c0b2907b57d61d667c9e4176421641c4200280bcdc89b969a05ec847bb1277c39040038cb130ad0b15be8ab254a",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-a170f541bfc74e8b0676de9d",
+      "createdAt": "2026-11-19T19:15:02.777Z",
+      "activatedAt": "2026-11-19T19:15:02.777Z"
+    },
+    {
       "id": "USER-917ab49eb0f2bc76f0831724",
       "fullName": "Meme",
       "username": "aniefiok",
