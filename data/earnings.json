@@ -17293,13 +17293,13 @@
       "lastTapAt": 1795105052712
     },
     "USER-53a9d96aae6db3754ea826cf": {
-      "balance": 8600,
+      "balance": 8700,
       "todayDate": "2026-11-19",
-      "todayEarnings": 8600,
-      "tapPoints": 5600,
-      "tapCount": 16,
-      "tapDailyPoints": 5600,
-      "tapDailyEarnings": 1600,
+      "todayEarnings": 8700,
+      "tapPoints": 5950,
+      "tapCount": 17,
+      "tapDailyPoints": 5950,
+      "tapDailyEarnings": 1700,
       "videoEarnings": 7000,
       "claimedVideos": [
         "seyi-vibes",
@@ -17327,9 +17327,18 @@
         "165ec370-e0f7-488c-aac2-10a6ffb0a908",
         "f546937b-c1ae-4038-8587-53bacbff6206",
         "fffbcee6-edd1-4ccc-a60f-fd884f23a356",
-        "feea8b4d-722c-4e2e-bb68-e5b69bc3bb73"
+        "feea8b4d-722c-4e2e-bb68-e5b69bc3bb73",
+        "7fb139e0-9ca5-4762-b777-8ed1db8104a0"
       ],
       "history": [
+        {
+          "id": "7fb139e0-9ca5-4762-b777-8ed1db8104a0",
+          "title": "Tap Rewards",
+          "subtitle": "Tap Tap",
+          "amount": 100,
+          "date": "2026-11-19T16:33:35.292Z",
+          "currency": "NGN"
+        },
         {
           "id": "feea8b4d-722c-4e2e-bb68-e5b69bc3bb73",
           "title": "Tap Rewards",
@@ -17491,7 +17500,7 @@
           "currency": "NGN"
         }
       ],
-      "lastTapAt": 1795106006858
+      "lastTapAt": 1795106015292
     }
   }
 }
