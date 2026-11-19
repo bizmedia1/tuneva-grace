@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-f9434b18e2a68cc499d06eda",
+      "fullName": "Ayomide 1",
+      "username": "ayomide",
+      "email": "36eniola36@gmail.com",
+      "phone": "09016423874",
+      "passwordHash": "95e0fdf788edbfa067e9a1329fc94fe7:67a172f36b3fdfd47413fe940a7ccac061b900dc0e3bcf854c8ddab7c60d0f66cc403a3a36843615b10d07d933a4a8407f6b5e8ddb2a20fa93e823099d7cdf1e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-d4a5b54ca37291e0bbb34d8c",
+      "createdAt": "2026-11-19T20:08:17.600Z",
+      "activatedAt": "2026-11-19T20:08:17.600Z"
+    },
+    {
       "id": "USER-517c3d14cec9b9eb3ff7b94f",
       "fullName": "Ajo sumaila",
       "username": "sumaila",
