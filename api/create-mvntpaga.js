@@ -15,13 +15,34 @@ const {
 
 const PAYMENTS_FILE = "data/payments.json";
 const USERS_FILE = "data/users.json";
+const SETTINGS_FILE = "data/admin-settings.json";
 
-const ACTIVATION_AMOUNT_KOBO = 530000;
+const DEFAULT_ACTIVATION_PRICES = [5300, 9300];
 const ACTIVATION_EXPIRY_MINUTES = 50;
+
+/* RESPONSE */
 
 function send(res, status, data) {
   return res.status(status).json(data);
 }
+
+/* LOGGING */
+
+function logInfo(event, details = {}) {
+  console.log(
+    `[TUNEVA CREATE] ${event}`,
+    JSON.stringify(details)
+  );
+}
+
+function logError(event, details = {}) {
+  console.error(
+    `[TUNEVA CREATE] ${event}`,
+    JSON.stringify(details)
+  );
+}
+
+/* HELPERS */
 
 function makeReference() {
   return (
@@ -44,7 +65,56 @@ function hashToken(token) {
     .digest("hex");
 }
 
+function normalizePhone(phone) {
+  let value = String(phone || "").replace(/\D/g, "");
+
+  if (value.startsWith("234") && value.length === 13) {
+    value = "0" + value.slice(3);
+  }
+
+  return value;
+}
+
+function getActivationPrices(settings) {
+  const prices = settings?.activationPrices;
+
+  if (
+    Array.isArray(prices) &&
+    prices.length === 2 &&
+    prices.every(value =>
+      Number.isSafeInteger(value) &&
+      value >= 100 &&
+      value <= 1000000
+    ) &&
+    prices[0] !== prices[1]
+  ) {
+    return prices;
+  }
+
+  return DEFAULT_ACTIVATION_PRICES;
+}
+
+/* MAIN HANDLER */
+
 module.exports = async function handler(req, res) {
+  const startedAt = Date.now();
+
+  const requestId = String(
+    req.headers["x-vercel-id"] ||
+    req.headers["x-request-id"] ||
+    crypto.randomUUID()
+  );
+
+  let stage = "request_received";
+
+  const logContext = {
+    requestId,
+    method: req.method,
+    path: req.url || "/api/create-mvntpaga"
+  };
+
+  /* CORS HEADERS */
+
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader(
@@ -53,11 +123,48 @@ module.exports = async function handler(req, res) {
   );
   res.setHeader("Cache-Control", "no-store");
 
+  /* REQUEST LOG */
+
+  logInfo("REQUEST", {
+    ...logContext,
+    origin: req.headers.origin || null,
+    userAgent: req.headers["user-agent"] || null,
+    time: new Date().toISOString()
+  });
+
+  /* AUTOMATIC RESPONSE LOG */
+
+  res.on("finish", function () {
+    logInfo("RESPONSE", {
+      ...logContext,
+      status: res.statusCode,
+      stage,
+      durationMs: Date.now() - startedAt
+    });
+  });
+
+  /* CORS PREFLIGHT */
+
   if (req.method === "OPTIONS") {
+    stage = "cors_preflight";
+
+    logInfo("CORS PREFLIGHT", {
+      ...logContext,
+      origin: req.headers.origin || null,
+      requestedMethod:
+        req.headers["access-control-request-method"] || null,
+      requestedHeaders:
+        req.headers["access-control-request-headers"] || null
+    });
+
     return res.status(200).end();
   }
 
+  /* METHOD VALIDATION */
+
   if (req.method !== "POST") {
+    stage = "method_not_allowed";
+
     return send(res, 405, {
       status: false,
       message: "Method not allowed."
@@ -65,14 +172,27 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    /* CHECK PAYMENT CONFIGURATION */
+
+    stage = "checking_payment_configuration";
+
     const secretKey = process.env.MOVANTRA_SECRET_KEY;
 
     if (!secretKey) {
+      logError("CONFIGURATION ERROR", {
+        ...logContext,
+        stage
+      });
+
       return send(res, 500, {
         status: false,
         message: "Payment service is not configured."
       });
     }
+
+    /* READ REQUEST DATA */
+
+    stage = "validating_customer_details";
 
     const body = req.body || {};
 
@@ -119,22 +239,66 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    logInfo("CUSTOMER VALIDATION PASSED", logContext);
+
+    /* LOAD ADMIN ACTIVATION PRICES */
+
+    stage = "loading_activation_settings";
+
+    logInfo("GITHUB READ STARTED", {
+      ...logContext,
+      file: SETTINGS_FILE
+    });
+
+    const settingsResult = await readJSON(
+      SETTINGS_FILE,
+      {}
+    );
+
+    const activationPrices = getActivationPrices(
+      settingsResult.data
+    );
+
+    const allowedAmountsKobo = activationPrices.map(
+      amount => amount * 100
+    );
+
+    logInfo("ACTIVATION SETTINGS LOADED", {
+      ...logContext,
+      availablePriceCount: activationPrices.length
+    });
+
+    /* VALIDATE SELECTED ACTIVATION PRICE */
+
+    stage = "validating_activation_amount";
+
     const suppliedAmount = body.amount_kobo !== undefined
       ? Number(body.amount_kobo)
       : body.amount !== undefined
         ? Math.round(Number(body.amount) * 100)
-        : ACTIVATION_AMOUNT_KOBO;
+        : allowedAmountsKobo[0];
 
     if (
       !Number.isSafeInteger(suppliedAmount) ||
-      suppliedAmount !== ACTIVATION_AMOUNT_KOBO
+      !allowedAmountsKobo.includes(suppliedAmount)
     ) {
       return send(res, 400, {
         status: false,
         code: "invalid_activation_amount",
-        message: "Tuneva activation costs exactly NGN 5,300."
+        message: "Choose a valid Tuneva activation price."
       });
     }
+
+    const activationAmountKobo = suppliedAmount;
+
+    /* LOAD EXISTING USERS AND PAYMENTS */
+
+    stage = "loading_users_and_payments";
+
+    logInfo("GITHUB DATA READ STARTED", {
+      ...logContext,
+      files: [USERS_FILE, PAYMENTS_FILE]
+    });
 
     const [userFile, paymentFile] = await Promise.all([
       readJSON(USERS_FILE, { users: [] }),
@@ -149,36 +313,66 @@ module.exports = async function handler(req, res) {
       ? paymentFile.data.payments
       : [];
 
-    const usernameExists = users.some(user =>
-      normalizeUsername(user.username) === username
-    );
+    logInfo("GITHUB DATA LOADED", {
+      ...logContext,
+      userCount: users.length,
+      paymentCount: payments.length
+    });
 
-    const emailExists = users.some(user =>
-      normalizeEmail(user.email) === customerEmail
-    );
+    /* CHECK ACTIVATED ACCOUNTS ONLY */
 
-    const pendingExists = payments.some(payment =>
-      payment.status === "pending" &&
-      (
-        normalizeUsername(payment.username) === username ||
-        normalizeEmail(payment.email) === customerEmail
-      )
-    );
+    stage = "checking_existing_account";
 
-    if (usernameExists || emailExists || pendingExists) {
+    const customerPhoneNormalized = normalizePhone(customerPhone);
+
+    const existingAccount = users.find(user => {
+      const existingUsername = normalizeUsername(user.username);
+      const existingEmail = normalizeEmail(user.email);
+
+      const existingPhone = normalizePhone(
+        user.phone ||
+        user.phoneNumber ||
+        user.customerPhone ||
+        user.customer_phone
+      );
+
+      return (
+        existingUsername === username ||
+        existingEmail === customerEmail ||
+        (
+          customerPhoneNormalized &&
+          existingPhone &&
+          existingPhone === customerPhoneNormalized
+        )
+      );
+    });
+
+    if (existingAccount) {
+      logInfo("EXISTING ACCOUNT FOUND", logContext);
+
       return send(res, 409, {
         status: false,
         code: "account_exists",
-        message: "This username or email is already registered or awaiting activation."
+        message: "An activated account already exists with this username, email or phone number."
       });
     }
 
+    /* HASH PASSWORD */
+
+    stage = "hashing_password";
+
     const passwordHash = await hashPassword(password);
+
+    logInfo("PASSWORD HASH COMPLETED", logContext);
+
+    /* CREATE MOVANTRA PAYMENT ACCOUNT */
+
+    stage = "creating_movantra_account";
 
     const reference = makeReference();
 
     const movantraBody = {
-      amount_kobo: ACTIVATION_AMOUNT_KOBO,
+      amount_kobo: activationAmountKobo,
       customer_name: customerName,
       customer_email: customerEmail,
       reference,
@@ -193,6 +387,12 @@ module.exports = async function handler(req, res) {
       movantraBody.callback_url = process.env.PAGA_CALLBACK_URL;
     }
 
+    logInfo("MOVANTRA REQUEST STARTED", {
+      ...logContext,
+      reference,
+      amountKobo: activationAmountKobo
+    });
+
     const providerResponse = await fetch(
       "https://api.movantrapay.com/v1/paga/dynamic-accounts",
       {
@@ -205,11 +405,24 @@ module.exports = async function handler(req, res) {
       }
     );
 
+    logInfo("MOVANTRA RESPONSE RECEIVED", {
+      ...logContext,
+      httpStatus: providerResponse.status,
+      ok: providerResponse.ok
+    });
+
     let result;
 
     try {
       result = await providerResponse.json();
-    } catch (_) {
+    } catch (error) {
+      logError("MOVANTRA INVALID JSON RESPONSE", {
+        ...logContext,
+        stage,
+        httpStatus: providerResponse.status,
+        error: error.message
+      });
+
       return send(res, 502, {
         status: false,
         message: "Invalid response from payment provider."
@@ -217,7 +430,13 @@ module.exports = async function handler(req, res) {
     }
 
     if (!providerResponse.ok || !result || result.status !== true) {
-      console.error("[TUNEVA] Movantra account error:", result);
+      logError("MOVANTRA ACCOUNT ERROR", {
+        ...logContext,
+        stage,
+        httpStatus: providerResponse.status,
+        providerStatus: result?.status ?? null,
+        providerMessage: result?.message || null
+      });
 
       return send(res, 502, {
         status: false,
@@ -231,6 +450,15 @@ module.exports = async function handler(req, res) {
       !result.account_name ||
       !result.bank_name
     ) {
+      logError("MOVANTRA INCOMPLETE ACCOUNT DETAILS", {
+        ...logContext,
+        stage,
+        httpStatus: providerResponse.status,
+        hasAccountNumber: Boolean(result.account_number),
+        hasAccountName: Boolean(result.account_name),
+        hasBankName: Boolean(result.bank_name)
+      });
+
       return send(res, 502, {
         status: false,
         message: "Payment provider returned incomplete account details."
@@ -242,11 +470,25 @@ module.exports = async function handler(req, res) {
     ).trim();
 
     if (!providerReference) {
+      logError("INVALID PAYMENT REFERENCE", {
+        ...logContext,
+        stage
+      });
+
       return send(res, 502, {
         status: false,
         message: "Invalid payment reference."
       });
     }
+
+    logInfo("MOVANTRA ACCOUNT CREATED", {
+      ...logContext,
+      reference: providerReference
+    });
+
+    /* CREATE PAYMENT RECORD */
+
+    stage = "creating_payment_record";
 
     const paymentId = makePaymentId();
     const statusToken = makeStatusToken();
@@ -260,8 +502,8 @@ module.exports = async function handler(req, res) {
       phone: customerPhone,
       passwordHash,
 
-      amount: ACTIVATION_AMOUNT_KOBO / 100,
-      amountKobo: ACTIVATION_AMOUNT_KOBO,
+      amount: activationAmountKobo / 100,
+      amountKobo: activationAmountKobo,
 
       method: "paga",
       provider: "movantra",
@@ -292,11 +534,25 @@ module.exports = async function handler(req, res) {
         String(item.reference || "") === providerReference
       )
     ) {
+      logError("DUPLICATE PAYMENT REFERENCE", {
+        ...logContext,
+        reference: providerReference
+      });
+
       return send(res, 409, {
         status: false,
         message: "Payment reference already exists."
       });
     }
+
+    /* SAVE PAYMENT */
+
+    stage = "saving_payment_record";
+
+    logInfo("GITHUB PAYMENT WRITE STARTED", {
+      ...logContext,
+      file: PAYMENTS_FILE
+    });
 
     await writeJSON(
       PAYMENTS_FILE,
@@ -307,6 +563,23 @@ module.exports = async function handler(req, res) {
       paymentFile.sha
     );
 
+    logInfo("GITHUB PAYMENT WRITE COMPLETED", {
+      ...logContext,
+      paymentId,
+      reference: providerReference
+    });
+
+    /* RETURN PAYMENT DETAILS */
+
+    stage = "account_created";
+
+    logInfo("ACCOUNT CREATION SUCCESSFUL", {
+      ...logContext,
+      paymentId,
+      reference: providerReference,
+      durationMs: Date.now() - startedAt
+    });
+
     return send(res, 200, {
       status: true,
       paymentId,
@@ -315,7 +588,7 @@ module.exports = async function handler(req, res) {
       account_number: result.account_number,
       account_name: result.account_name,
       bank_name: result.bank_name,
-      amount_kobo: ACTIVATION_AMOUNT_KOBO,
+      amount_kobo: activationAmountKobo,
       fee_kobo: result.fee_kobo ?? null,
       net_kobo: result.net_kobo ?? null,
       status_text: result.status_text || "pending",
@@ -324,7 +597,13 @@ module.exports = async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error("[TUNEVA] Payment creation error:", error);
+    logError("UNEXPECTED ERROR", {
+      ...logContext,
+      stage,
+      message: error.message,
+      stack: error.stack || null,
+      durationMs: Date.now() - startedAt
+    });
 
     return send(res, 500, {
       status: false,
