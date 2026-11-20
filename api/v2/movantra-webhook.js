@@ -21,7 +21,7 @@ const FILES = {
 
 const TIME_ZONE = "Africa/Lagos";
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const TUNEVA_ACTIVATION_KOBO = 530000;
+
 
 /* =====================================================
    RESPONSE
@@ -101,6 +101,67 @@ function normalizeUsername(value) {
 
 function normalizeEmail(value) {
   return String(value || "").trim().toLowerCase();
+}
+
+function normalizePhone(value) {
+  let phone = String(value || "").replace(/\D/g, "");
+
+  if (phone.startsWith("234") && phone.length === 13) {
+    phone = "0" + phone.slice(3);
+  }
+
+  return phone;
+}
+
+/* =====================================================
+   FIND CONFLICTING ACTIVATED ACCOUNT
+===================================================== */
+
+async function findActivatedAccountConflict(payment, id) {
+  const username = normalizeUsername(payment.username);
+  const email = normalizeEmail(payment.email);
+  const phone = normalizePhone(payment.phone);
+
+  if (!username || !email) {
+    throw new Error(
+      "Verified payment is missing username or email."
+    );
+  }
+
+  const usersFile = await readJSON(FILES.users, {
+    users: []
+  });
+
+  const users = Array.isArray(usersFile.data?.users)
+    ? usersFile.data.users
+    : [];
+
+  return users.find(user => {
+    // A retry for this same payment is not a conflict.
+    if (String(user.paymentId || "") === id) {
+      return false;
+    }
+
+    const existingUsername = normalizeUsername(user.username);
+    const existingEmail = normalizeEmail(user.email);
+
+    const existingPhone = normalizePhone(
+      user.phone ||
+      user.phoneNumber ||
+      user.customerPhone ||
+      user.customer_phone
+    );
+
+    return (
+      existingUsername === username ||
+      existingEmail === email ||
+      (
+        phone &&
+        existingPhone &&
+        existingPhone === phone
+      )
+    );
+  }) || null;
 }
 
 /* =====================================================
@@ -250,14 +311,15 @@ async function createVerifiedUser(payment, id) {
     return existingUser;
   }
 
-  const conflictingUser = users.find(user =>
-    normalizeUsername(user.username) === username ||
-    normalizeEmail(user.email) === email
+  // Final duplicate protection before account creation.
+  const conflictingUser = await findActivatedAccountConflict(
+    payment,
+    id
   );
 
   if (conflictingUser) {
     throw new Error(
-      "Username or email already belongs to another account."
+      "Username, email or phone already belongs to another activated account."
     );
   }
 
@@ -321,7 +383,7 @@ async function removeTemporaryPasswordHash(id) {
     : [];
 
   const index = payments.findIndex(payment =>
-    String(payment.id || "") === id
+    paymentId(payment) === id
   );
 
   if (index === -1) {
@@ -546,22 +608,6 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    /* ENFORCE TUNEVA ACTIVATION AMOUNT */
-
-    if (
-      payment.activation === true &&
-      amountKobo !== TUNEVA_ACTIVATION_KOBO
-    ) {
-      console.error(
-        "[TUNEVA MOVANTRA] Invalid activation amount:",
-        reference
-      );
-
-      return send(res, 400, {
-        status: false,
-        message: "Invalid Tuneva activation amount."
-      });
-    }
 
     const currentStatus = String(
       payment.status || "pending"
@@ -593,11 +639,72 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    /* APPROVE PAYMENT AND GENERATE POF */
+    /* CHECK ACTIVATED ACCOUNT OWNERSHIP BEFORE APPROVAL */
+
+    const id = paymentId(payment);
+
+    let activationConflict = null;
+
+    if (payment.activation === true) {
+      activationConflict = await findActivatedAccountConflict(
+        payment,
+        id
+      );
+    }
+
+    /* APPROVE PAYMENT OR FLAG DUPLICATE ACTIVATION */
 
     let approvedPayment = payment;
 
-    if (currentStatus !== "approved") {
+    if (activationConflict) {
+      /*
+        Money was received, but the details already
+        belong to another activated account.
+
+        Do not create another account or report this
+        payment as an activated registration.
+        Record it for manual admin resolution.
+      */
+
+      const processedAt =
+        payment.processedAt || new Date().toISOString();
+
+      approvedPayment = {
+        ...payment,
+
+        status: "rejected",
+        processedAt,
+
+        approvalSource: "movantra_webhook",
+        movantraWebhookProcessed: true,
+
+        paymentReceived: true,
+        activationConflict: true,
+        activationConflictReason:
+          "Username, email or phone already belongs to an activated account.",
+
+        conflictingUserId:
+          String(activationConflict.id || "")
+      };
+
+      const updatedPayments = [...payments];
+      updatedPayments[index] = approvedPayment;
+
+      await writeJSON(
+        FILES.payments,
+        {
+          ...paymentData,
+          payments: updatedPayments
+        },
+        paymentFile.sha
+      );
+
+      console.warn(
+        "[TUNEVA MOVANTRA] Payment requires duplicate-account review:",
+        reference
+      );
+
+    } else if (currentStatus !== "approved") {
       const processedAt = new Date().toISOString();
 
       const pofPass = generateUniquePofPass(
@@ -619,7 +726,6 @@ module.exports = async function handler(req, res) {
       };
 
       const updatedPayments = [...payments];
-
       updatedPayments[index] = approvedPayment;
 
       await writeJSON(
@@ -645,13 +751,14 @@ module.exports = async function handler(req, res) {
       approvedPayment = payment;
     }
 
-    const id = paymentId(approvedPayment);
-
-    /* CREATE USER AFTER VERIFIED PAYMENT */
+    /* CREATE USER ONLY IF NO ACTIVATED ACCOUNT CONFLICT */
 
     if (approvedPayment.activation === true) {
-      await createVerifiedUser(approvedPayment, id);
+      if (!activationConflict) {
+        await createVerifiedUser(approvedPayment, id);
+      }
 
+      // Remove temporary password hash after processing.
       await removeTemporaryPasswordHash(id);
     }
 
@@ -693,7 +800,9 @@ module.exports = async function handler(req, res) {
         reference,
         type: "credit",
         status: "successful",
-        description: "MOVANTRA Paga payment",
+        description: activationConflict
+          ? "MOVANTRA Paga payment - activation requires review"
+          : "MOVANTRA Paga payment",
         createdAt: approvedPayment.processedAt
       };
 
@@ -758,6 +867,7 @@ module.exports = async function handler(req, res) {
       paymentId: id,
       amount: amountKobo / 100,
       currency,
+      activationConflict: Boolean(activationConflict),
       mode: payload.mode || null
     });
 
@@ -765,12 +875,15 @@ module.exports = async function handler(req, res) {
       status: true,
       received: true,
       verified: true,
-      approved: true,
+      approved: !activationConflict,
+      activationConflict: Boolean(activationConflict),
       event: eventName,
       reference,
       paymentId: id,
       pofGenerated: Boolean(approvedPayment.pofPass),
-      userCreated: approvedPayment.activation === true
+      userCreated:
+        approvedPayment.activation === true &&
+        !activationConflict
     });
 
   } catch (error) {
