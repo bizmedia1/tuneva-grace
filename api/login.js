@@ -8,6 +8,7 @@ const {
   normalizeEmail,
   verifyPassword,
   setSessionCookie,
+  createPersistentSessionToken,
   setCors
 } = require("../lib/auth");
 
@@ -19,7 +20,7 @@ module.exports = async function handler(req, res) {
   setCors(req, res);
 
   if (req.method === "OPTIONS") {
-    return res.status(200).end();
+    return res.status(204).end();
   }
 
   if (req.method !== "POST") {
@@ -89,16 +90,20 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // Create and set the session cookie using the user object.
+    const authToken = createPersistentSessionToken(user);
+
     setSessionCookie(res, user);
 
     return send(res, 200, {
       ok: true,
+      authToken,
       user: {
         id: user.id,
         fullName: user.fullName,
         username: user.username,
-        email: user.email
+        email: user.email,
+        phone: user.phone,
+        status: user.status
       }
     });
 
