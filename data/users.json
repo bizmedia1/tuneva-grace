@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a4125cd17a014d18542d6985",
+      "fullName": "Akinyele Olaitan",
+      "username": "yeleola",
+      "email": "olaitanakinyele983@gmail.com",
+      "phone": "08034137445",
+      "passwordHash": "a3d158e4209f2b98cc4b2e2d18b190de:d772d66a71ee05551015f63ee14320c0c4490b7a32ac905b4fc6caa3223a1b951a9e838a12ec0781450fb73d6fb5e4885370b2cf944266a2866853834314281e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-da9ef44816bb54f011081140",
+      "createdAt": "2026-11-20T06:22:15.408Z",
+      "activatedAt": "2026-11-20T06:22:15.408Z"
+    },
+    {
       "id": "USER-498a27193ab1aeef8662ba47",
       "fullName": "Blessed",
       "username": "blessed",
