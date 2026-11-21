@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5cd1068ca51f03cbcf3ea772",
+      "fullName": "Preety oha",
+      "username": "preety23",
+      "email": "preety@gmail.com",
+      "phone": "09123452565",
+      "passwordHash": "3a0c6bf98c5897be54f51dc18900dc4d:831e6b38a074cffe806acbcfa3583c80ff752c05585a7d9cf18397094d66ddee8abbdf2ad18eef6ddea96411b91b99eb296d93bb2ef6818ea435825ac8a65310",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-d79eaefe6777632d0f4739d7",
+      "createdAt": "2026-11-21T19:09:25.533Z",
+      "activatedAt": "2026-11-21T19:09:25.533Z"
+    },
+    {
       "id": "USER-880c5c7bda3d38aef0144e34",
       "fullName": "Elijah Lawrence otu",
       "username": "elifx12",
