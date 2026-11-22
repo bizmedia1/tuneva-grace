@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e51b6f78dc7081ba30e257b4",
+      "fullName": "Nanbam Danjuma",
+      "username": "bambam22",
+      "email": "nanbamdanjuma12@gmail.com",
+      "phone": "07032299999",
+      "passwordHash": "976a126c2cbd112ded1fa76fad3208a3:4e1e86269a10ad1b418eb1909cdd11a1574f0e48f31b700ea9ef5ad9cf4ca4a793df820f8be8f0ad3b99b8bb3303e617b01aa48c0cdc95e36e37ddc61bb7ea2e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c82c60e163782385c8088680",
+      "createdAt": "2026-11-22T21:36:34.948Z",
+      "activatedAt": "2026-11-22T21:36:34.948Z"
+    },
+    {
       "id": "USER-b4264b51fe1ce422b7b8965a",
       "fullName": "Mamasmamsm ananans",
       "username": "blamana",
