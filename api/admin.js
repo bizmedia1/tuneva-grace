@@ -12,11 +12,13 @@ const DEFAULT_SETTINGS = {
   tapReward: 100,
   dailyTapLimit: 3000,
   videoReward: 1750,
-  withdrawalsEnabled: true
+  withdrawalsEnabled: true,
+  paymentDestinationMode: "api",
+  externalPaymentUrl: ""
 };
 
 const ALLOWED_ORIGINS = new Set([
-  "https://api.tunevaapp.com.ng",
+  "https://api.tunevaweb.com.ng",
   process.env.TUNEVA_ADMIN_ORIGIN,
   process.env.TUNEVA_FRONTEND_ORIGIN
 ].filter(Boolean));
@@ -68,6 +70,60 @@ function validateSettings(body) {
     }
 
     settings.withdrawalsEnabled = body.withdrawalsEnabled;
+  }
+
+  // PAYMENT DESTINATION SETTINGS
+
+  if (
+    Object.prototype.hasOwnProperty.call(
+      body,
+      "paymentDestinationMode"
+    )
+  ) {
+    if (
+      !["api", "external"].includes(
+        body.paymentDestinationMode
+      )
+    ) {
+      return null;
+    }
+
+    settings.paymentDestinationMode =
+      body.paymentDestinationMode;
+  }
+
+  if (
+    Object.prototype.hasOwnProperty.call(
+      body,
+      "externalPaymentUrl"
+    )
+  ) {
+    if (typeof body.externalPaymentUrl !== "string") {
+      return null;
+    }
+
+    const externalUrl = body.externalPaymentUrl.trim();
+
+    if (externalUrl.length > 2048) {
+      return null;
+    }
+
+    if (externalUrl) {
+      try {
+        const parsedUrl = new URL(externalUrl);
+
+        if (
+          parsedUrl.protocol !== "https:" &&
+          parsedUrl.protocol !== "http:"
+        ) {
+          return null;
+        }
+      } catch (_) {
+        return null;
+      }
+    }
+
+    settings.externalPaymentUrl = externalUrl;
   }
 
   return settings;
