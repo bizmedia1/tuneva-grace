@@ -18,7 +18,7 @@ const DEFAULT_SETTINGS = {
 };
 
 const ALLOWED_ORIGINS = new Set([
-  "https://api.tunevaweb.com.ng",
+  "https://api.tunevaapp.com.ng",
   process.env.TUNEVA_ADMIN_ORIGIN,
   process.env.TUNEVA_FRONTEND_ORIGIN
 ].filter(Boolean));
