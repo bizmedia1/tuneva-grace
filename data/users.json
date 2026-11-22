@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d3de988c085104b31868b03d",
+      "fullName": "Peter Gloria",
+      "username": "ria_001",
+      "email": "gloriapeter312@gmail.com",
+      "phone": "07045604412",
+      "passwordHash": "5bf8f5fa4e0513c86e96ce92ffda457e:0bf96d3462c3501696784dd63199ac6bcd860cedaeda8aafd59f3c24ab7e52f454d57b4004cc0714f1721e9414cca947e442ba333f871fd4a0d51e222365ea4e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-716da62e61a5bdc34f2c966e",
+      "createdAt": "2026-11-22T20:33:01.564Z",
+      "activatedAt": "2026-11-22T20:33:01.564Z"
+    },
+    {
       "id": "USER-4803f2e9e12fd8a1d63cb60d",
       "fullName": "Oluchi Edeh",
       "username": "princessolliy",
