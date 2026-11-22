@@ -10,7 +10,6 @@ const {
 function send(res, status, data) {
   return res.status(status).json(data);
 }
-
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -20,7 +19,6 @@ module.exports = async function handler(req, res) {
   if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
-
   if (req.method !== "POST") {
     return send(res, 405, {
       ok: false,
@@ -156,4 +154,3 @@ module.exports = async function handler(req, res) {
     });
   }
 };
-
