@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d8f9b3a9359ca38876cc21db",
+      "fullName": "ODEY ELIZABETH",
+      "username": "lizzy",
+      "email": "odeyelizabeth24@gmail.com",
+      "phone": "08136240911",
+      "passwordHash": "7a5294f4f33822b4958f113cd5b737c2:9ae637a28313980ec3d09e5de548ef0df047d662116c7c11e57fb4c8a15817e8ad1b9565da2c971f585ec970c1b9c41ca63d76419f9542e648f441122602bd0d",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-007fa9d50a9054763664123c",
+      "createdAt": "2026-11-22T21:14:06.228Z",
+      "activatedAt": "2026-11-22T21:14:06.228Z"
+    },
+    {
       "id": "USER-c3588197aa699eab96976613",
       "fullName": "Efe Joshua",
       "username": "prestcastlefilmindus",
