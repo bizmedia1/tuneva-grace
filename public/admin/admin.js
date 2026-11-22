@@ -17,6 +17,15 @@
   const withdrawalStatus = document.getElementById("ta-withdrawal-status");
   const withdrawalMessage = document.getElementById("ta-withdrawal-message");
 
+  const paymentApiToggle = document.getElementById("ta-payment-api-toggle");
+  const paymentApiStatus = document.getElementById("ta-payment-api-status");
+  const paymentExternalToggle = document.getElementById("ta-payment-external-toggle");
+  const paymentExternalStatus = document.getElementById("ta-payment-external-status");
+  const paymentExternalField = document.getElementById("ta-payment-external-field");
+  const paymentExternalUrl = document.getElementById("ta-payment-external-url");
+  const paymentDestinationButton = document.getElementById("ta-save-payment-destination");
+  const paymentDestinationMessage = document.getElementById("ta-payment-destination-message");
+
   const fields = {
     priceOne: document.getElementById("ta-price-one"),
     priceTwo: document.getElementById("ta-price-two"),
@@ -32,12 +41,16 @@
     tapReward: 100,
     dailyTapLimit: 3000,
     videoReward: 1750,
-    withdrawalsEnabled: true
+    withdrawalsEnabled: true,
+    paymentDestinationMode: "api",
+    externalPaymentUrl: ""
   };
 
   let requestInProgress = false;
   let settingsLoaded = false;
   let withdrawalsEnabled = true;
+  let paymentDestinationMode = "api";
+  let externalPaymentUrl = "";
 
   function setMessage(element, message, type) {
     element.textContent = message || "";
@@ -102,6 +115,31 @@
       : "Withdrawals are currently disabled.";
   }
 
+  function updatePaymentDestinationControls() {
+    const apiActive = paymentDestinationMode === "api";
+    const externalActive = paymentDestinationMode === "external";
+
+    paymentApiToggle.setAttribute(
+      "aria-checked",
+      apiActive ? "true" : "false"
+    );
+
+    paymentExternalToggle.setAttribute(
+      "aria-checked",
+      externalActive ? "true" : "false"
+    );
+
+    paymentApiStatus.textContent = apiActive
+      ? "Inbuilt Movantra API is active."
+      : "Inbuilt API is inactive.";
+
+    paymentExternalStatus.textContent = externalActive
+      ? "External URL is active."
+      : "External URL is inactive.";
+
+    paymentExternalField.hidden = !externalActive;
+  }
+
   function populateSettings(settings) {
     const prices = Array.isArray(settings.activationPrices)
       ? settings.activationPrices
@@ -127,6 +165,20 @@
         ? settings.withdrawalsEnabled
         : DEFAULT_SETTINGS.withdrawalsEnabled
     );
+
+    paymentDestinationMode =
+      settings.paymentDestinationMode === "external"
+        ? "external"
+        : "api";
+
+    externalPaymentUrl =
+      typeof settings.externalPaymentUrl === "string"
+        ? settings.externalPaymentUrl
+        : "";
+
+    paymentExternalUrl.value = externalPaymentUrl;
+
+    updatePaymentDestinationControls();
   }
 
   function collectSettings() {
@@ -139,7 +191,9 @@
       tapReward: Number(fields.tapReward.value),
       dailyTapLimit: Number(fields.dailyLimit.value),
       videoReward: Number(fields.videoReward.value),
-      withdrawalsEnabled
+      withdrawalsEnabled,
+      paymentDestinationMode,
+      externalPaymentUrl
     };
 
     if (
@@ -169,6 +223,23 @@
       throw new Error("Enter a valid video reward.");
     }
 
+    if (values.paymentDestinationMode === "external") {
+      let parsedUrl;
+
+      try {
+        parsedUrl = new URL(values.externalPaymentUrl);
+      } catch (_) {
+        throw new Error("Enter a valid external payment URL.");
+      }
+
+      if (
+        parsedUrl.protocol !== "https:" &&
+        parsedUrl.protocol !== "http:"
+      ) {
+        throw new Error("The external URL must use HTTP or HTTPS.");
+      }
+    }
+
     return values;
   }
 
@@ -177,7 +248,11 @@
 
     requestInProgress = true;
     setMessage(settingsMessage, "Loading settings...", "");
+
     withdrawalsToggle.disabled = true;
+    paymentApiToggle.disabled = true;
+    paymentExternalToggle.disabled = true;
+    paymentDestinationButton.disabled = true;
 
     try {
       const result = await apiRequest("GET");
@@ -191,14 +266,20 @@
       );
 
       settingsLoaded = true;
+
       withdrawalsToggle.disabled = false;
+      paymentApiToggle.disabled = false;
+      paymentExternalToggle.disabled = false;
+      paymentDestinationButton.disabled = false;
 
       setMessage(settingsMessage, "", "");
       setMessage(withdrawalMessage, "", "");
+      setMessage(paymentDestinationMessage, "", "");
 
     } catch (error) {
       setMessage(settingsMessage, error.message, "error");
       setMessage(withdrawalMessage, error.message, "error");
+      setMessage(paymentDestinationMessage, error.message, "error");
 
     } finally {
       requestInProgress = false;
@@ -213,6 +294,7 @@
     let settings;
 
     try {
+      externalPaymentUrl = paymentExternalUrl.value.trim();
       settings = collectSettings();
     } catch (error) {
       setMessage(settingsMessage, error.message, "error");
@@ -300,6 +382,83 @@
     }
   });
 
+  paymentApiToggle.addEventListener("click", function () {
+    if (requestInProgress || !settingsLoaded) return;
+
+    paymentDestinationMode = "api";
+    updatePaymentDestinationControls();
+
+    setMessage(
+      paymentDestinationMessage,
+      "Inbuilt API selected. Save to apply this setting.",
+      ""
+    );
+  });
+
+  paymentExternalToggle.addEventListener("click", function () {
+    if (requestInProgress || !settingsLoaded) return;
+
+    paymentDestinationMode = "external";
+    updatePaymentDestinationControls();
+
+    setMessage(
+      paymentDestinationMessage,
+      "External URL selected. Enter the URL and save.",
+      ""
+    );
+  });
+
+  paymentDestinationButton.addEventListener("click", async function () {
+    if (requestInProgress || !settingsLoaded) return;
+
+    externalPaymentUrl = paymentExternalUrl.value.trim();
+
+    let settings;
+
+    try {
+      settings = collectSettings();
+    } catch (error) {
+      setMessage(paymentDestinationMessage, error.message, "error");
+      return;
+    }
+
+    requestInProgress = true;
+    paymentDestinationButton.disabled = true;
+    paymentApiToggle.disabled = true;
+    paymentExternalToggle.disabled = true;
+    paymentDestinationButton.textContent = "Saving...";
+
+    setMessage(paymentDestinationMessage, "", "");
+
+    try {
+      const result = await apiRequest("POST", settings);
+
+      populateSettings(
+        Object.assign(
+          {},
+          DEFAULT_SETTINGS,
+          result.settings || settings
+        )
+      );
+
+      setMessage(
+        paymentDestinationMessage,
+        "Payment destination saved successfully.",
+        "success"
+      );
+
+    } catch (error) {
+      setMessage(paymentDestinationMessage, error.message, "error");
+
+    } finally {
+      requestInProgress = false;
+      paymentDestinationButton.disabled = false;
+      paymentApiToggle.disabled = false;
+      paymentExternalToggle.disabled = false;
+      paymentDestinationButton.textContent = "Save payment destination";
+    }
+  });
+
   openWithdrawalsButton.addEventListener("click", function () {
     platformScreen.hidden = true;
     withdrawalsScreen.hidden = false;
@@ -315,3 +474,4 @@
   loadDashboard();
 
 })();
+  
