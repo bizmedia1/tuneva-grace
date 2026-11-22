@@ -1,0 +1,14 @@
+{
+  "activationPrices": [
+    100,
+    9300
+  ],
+  "tapPoints": 350,
+  "tapReward": 100,
+  "dailyTapLimit": 3000,
+  "videoReward": 1750,
+  "withdrawalsEnabled": true,
+  "paymentDestinationMode": "api",
+  "externalPaymentUrl": "",
+  "updatedAt": "2026-11-22T20:41:07.486Z"
+}
