@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a738d9d0df6e7c52a686ca7b",
+      "fullName": "Lover gold",
+      "username": "goldlover",
+      "email": "annieb249@gmail.com",
+      "phone": "09023235472",
+      "passwordHash": "fdce56e7c1d866c53d30a7636de5d739:9355f7ca865803745fbd5be6ec00345fc451f21c8ad60df1b83df8fdedab62be5f39073180f3c2e5bebd5bfc7c75413cec0c4457b3b38e7b4706a87a071e28a8",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-d9e29e7db44da1c518e3471c",
+      "createdAt": "2026-11-22T22:51:20.724Z",
+      "activatedAt": "2026-11-22T22:51:20.724Z"
+    },
+    {
       "id": "USER-177ff853954009979a321fb2",
       "fullName": "Madman plea",
       "username": "madman",
