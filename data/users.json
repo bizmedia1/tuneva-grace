@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-dc82f29385b7f47bd3fce19d",
+      "fullName": "Blessing Osinachi",
+      "username": "blessinachi",
+      "email": "blessingosinachi0703@gmail.com",
+      "phone": "07038462315",
+      "passwordHash": "96d75a80d6b71e1998dcc82bed821150:48cfdb619552f47dc94d46c636361a50b0b70e424b8c79146a33ce6b2e1147b6829551bedef7643f702694bb80ab3d93e82d5d1b0950351b11383564efb9c3cb",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-3e6bcb7244ca7b15c99a7b45",
+      "createdAt": "2026-11-22T20:16:48.757Z",
+      "activatedAt": "2026-11-22T20:16:48.757Z"
+    },
+    {
       "id": "USER-5cd1068ca51f03cbcf3ea772",
       "fullName": "Preety oha",
       "username": "preety23",
