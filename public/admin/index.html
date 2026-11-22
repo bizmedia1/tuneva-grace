@@ -136,6 +136,75 @@
 
           <div class="ta-message" id="ta-withdrawal-message" aria-live="polite"></div>
         </div>
+
+        <!-- PAYMENT DESTINATION CONTROL -->
+        <div class="ta-card" id="ta-payment-destination-card">
+          <h3>Payment destination</h3>
+          <p>Choose where withdrawal form submissions are sent. Only one option can be active at a time.</p>
+
+          <!-- INBUILT API -->
+          <div class="ta-toggle-row">
+            <div class="ta-toggle-copy">
+              <strong>Inbuilt API</strong>
+              <span id="ta-payment-api-status">Loading status...</span>
+            </div>
+
+            <button
+              type="button"
+              class="ta-switch"
+              id="ta-payment-api-toggle"
+              role="switch"
+              aria-checked="true"
+              aria-label="Use inbuilt payment API"
+              disabled
+            >
+              <span></span>
+            </button>
+          </div>
+
+          <div class="ta-divider"></div>
+
+          <!-- EXTERNAL URL -->
+          <div class="ta-toggle-row">
+            <div class="ta-toggle-copy">
+              <strong>External URL</strong>
+              <span id="ta-payment-external-status">Loading status...</span>
+            </div>
+
+            <button
+              type="button"
+              class="ta-switch"
+              id="ta-payment-external-toggle"
+              role="switch"
+              aria-checked="false"
+              aria-label="Use external payment URL"
+              disabled
+            >
+              <span></span>
+            </button>
+          </div>
+
+          <div class="ta-field" id="ta-payment-external-field">
+            <label for="ta-payment-external-url">External destination URL</label>
+            <input
+              type="url"
+              id="ta-payment-external-url"
+              placeholder="https://example.com/payment"
+              autocomplete="url"
+            >
+            <p>Users will be redirected to this address after submitting the form.</p>
+          </div>
+
+          <button type="button" id="ta-save-payment-destination" disabled>
+            Save payment destination
+          </button>
+
+          <div
+            class="ta-message"
+            id="ta-payment-destination-message"
+            aria-live="polite"
+          ></div>
+        </div>
       </section>
 
       <footer class="ta-footer">
