@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-107e4a6ade529c97d0d2638f",
+      "fullName": "Thelma Eze",
+      "username": "elma",
+      "email": "eomasirichukwu@gmail.com",
+      "phone": "09038100173",
+      "passwordHash": "f21fa7eea74459c40051acd173070025:492bf09dddd4f6785bb43b67890edab252fdb8d9787141e6756ddc3f5d933c8ca769c2578d8866eabe13636e7e0290f50043345cef766409a6daea6b4bf41726",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-76b85dc492765dd10fad6071",
+      "createdAt": "2026-11-22T21:04:42.201Z",
+      "activatedAt": "2026-11-22T21:04:42.201Z"
+    },
+    {
       "id": "USER-fe385ab74500974ec3520644",
       "fullName": "Chioma precious Ngwuta",
       "username": "chiommie606",
