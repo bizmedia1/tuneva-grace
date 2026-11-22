@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-4923e27dda084affafdc57a4",
+      "fullName": "Okwuili Godpower",
+      "username": "godspower",
+      "email": "nwaliejigodspower@gmail.com",
+      "phone": "08062692782",
+      "passwordHash": "60a566e386292cb52479c4c6219d017c:77d03edc91375e287ac10bf1812d22f1e222d51d8b3b0ce68f7b03ca64093f9d7180b859347a6226fa8665db635c3e5686d6983af357789d7bebc61fa9447705",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-ec4c83cfbb7c6da0031f6fdd",
+      "createdAt": "2026-11-22T23:43:14.869Z",
+      "activatedAt": "2026-11-22T23:43:14.869Z"
+    },
+    {
       "id": "USER-a738d9d0df6e7c52a686ca7b",
       "fullName": "Lover gold",
       "username": "goldlover",
