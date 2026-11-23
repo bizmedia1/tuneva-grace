@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-b824727ba9a98c751aaa708d",
+      "fullName": "Precious 1",
+      "username": "momoh",
+      "email": "preciousmomoh2021@gmail.com",
+      "phone": "08118989143",
+      "passwordHash": "3775afce07511c5d19312bd13b4323fe:19293400437400c55d82978698aa821e0e02cc8ff6ea486ec4dd6510570f0ff74a7abe85d46cccd719ed6e369773ba13800bfa5593d2ca6f34e041b40664e176",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-d042537d4c47f64048f94cf2",
+      "createdAt": "2026-11-23T12:54:08.613Z",
+      "activatedAt": "2026-11-23T12:54:08.613Z"
+    },
+    {
       "id": "USER-b6fdb2eadb200a8bf3ad5ef3",
       "fullName": "Thomas blessing Grace",
       "username": "gracethomas50",
