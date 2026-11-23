@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-4d4eb1688373039645cf1e24",
+      "fullName": "Daniel Amarachukwu",
+      "username": "david",
+      "email": "richesdavid525@gmail.com",
+      "phone": "07017237970",
+      "passwordHash": "beec680c001a82d00ff01774ae14fd70:01910618c36aec2d7b452f6598fda5cc9ca6946ab89e740fe6bc688f7280d37cbd313713a580b92c45692134fdcd30618973ea6711e2e0ba5d3c22f8a2ce5362",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-5d0681cd356b92cef39ce54c",
+      "createdAt": "2026-11-23T18:36:54.438Z",
+      "activatedAt": "2026-11-23T18:36:54.438Z"
+    },
+    {
       "id": "USER-f5feef094eda80589a0870ce",
       "fullName": "Olayiwola Hephzibah",
       "username": "queenbella",
