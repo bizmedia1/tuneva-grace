@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-ce2d6ca14cddcb88767ebb57",
+      "fullName": "Afolabi Ayomide",
+      "username": "afolabi",
+      "email": "ayomideelizabeth223344@gmail.com",
+      "phone": "09034530293",
+      "passwordHash": "6c334441f5ea76ad73a9e42075452c3f:9a9078cc13929a6713c476d6341d13c36725219488e8ac88f2297986839b5d2675f41f150d304d679d630e9673c5b6a1ee791e9bf3e34c5c1907bd6d61c440cd",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-0afb7abe322f770b9af626e8",
+      "createdAt": "2026-11-23T08:55:26.428Z",
+      "activatedAt": "2026-11-23T08:55:26.428Z"
+    },
+    {
       "id": "USER-77a43142192fe5b1f80a067a",
       "fullName": "Best queen",
       "username": "bestqueen",
