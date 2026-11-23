@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-1dafc9d6dd789bba05d20e22",
+      "fullName": "Okoro debby",
+      "username": "debby1",
+      "email": "debbyadachi@gmail.com",
+      "phone": "07063890014",
+      "passwordHash": "d2a3dfcc3db3b7897cd5ea6630b14dea:09723ee4137352b3eab405890033afda1d97b3ea35638edd8dd82dd464ed1f9d1b91434586acb940c6bb5d54e7f07271fd794710023dbec8067672b42242ede5",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c1544756ed72b88a9d678238",
+      "createdAt": "2026-11-23T17:24:52.393Z",
+      "activatedAt": "2026-11-23T17:24:52.393Z"
+    },
+    {
       "id": "USER-2919071f39824e3cad9b986d",
       "fullName": "oluwabunmi Aminat",
       "username": "atole",
