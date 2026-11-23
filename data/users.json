@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-4e7f8950e01c2d596750eb83",
+      "fullName": "Angela ujunwa Nwalieji",
+      "username": "ujunwa",
+      "email": "nwaliejiangelaujunwa@gmail.com",
+      "phone": "09137588177",
+      "passwordHash": "0f9224d4f743779ba12fc5492f747cac:83b81a8d919ca88f51301de8440abe3df564d131de7d3df9be6b7a9e3226fed00e400c0f81c219e5a5acc720e0091e78b53055884a44a573bf35f77feae52d5e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c61cfcd4365f47790d4accb3",
+      "createdAt": "2026-11-23T14:21:41.631Z",
+      "activatedAt": "2026-11-23T14:21:41.631Z"
+    },
+    {
       "id": "USER-db0c4e0cafb20de128d82516",
       "fullName": "Otu Betty",
       "username": "betty",
