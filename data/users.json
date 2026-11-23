@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-db0c4e0cafb20de128d82516",
+      "fullName": "Otu Betty",
+      "username": "betty",
+      "email": "bettyotu79@gmail.com",
+      "phone": "08071294989",
+      "passwordHash": "16da3f4cef0807c24377ad1df371185a:d0f8e7374d05f32b995334b86d1b3b0d1e2f4de6e8e5cc92a785fff9c1c21427e058f9f4724f09f8b6b818251155d59eb45993118ebeeb5c52f2a873dcffc1f6",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c58d1c38bcc5e601d9105d5b",
+      "createdAt": "2026-11-23T14:12:52.781Z",
+      "activatedAt": "2026-11-23T14:12:52.781Z"
+    },
+    {
       "id": "USER-94208c79ba2f85d479b33ea3",
       "fullName": "Goodness Ezinne Emmanuel",
       "username": "goodnessezinneemmanu",
