@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-86ec3d0e884f204c2bef4ca3",
+      "fullName": "Stalla Izu",
+      "username": "stellalove",
+      "email": "stellaizu23@icloud.com",
+      "phone": "08057252507",
+      "passwordHash": "1443b62646b269f9c4c0de2295fa130a:a7bdcfe4ce323ae395c6b715c2b3ac856293e91696b390ba854d2cc547440947f0d0651821273cb1e188f5406fba334362fa7d45ff5b3807d707999d681c5f32",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f3794daa21dba04fd6d42a47",
+      "createdAt": "2026-11-23T09:53:26.525Z",
+      "activatedAt": "2026-11-23T09:53:26.525Z"
+    },
+    {
       "id": "USER-ce2d6ca14cddcb88767ebb57",
       "fullName": "Afolabi Ayomide",
       "username": "afolabi",
