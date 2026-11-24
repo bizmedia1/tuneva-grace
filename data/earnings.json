@@ -60458,21 +60458,31 @@
       "lastTapAt": 0
     },
     "USER-b18e1710d33da5d7f71f79f5": {
-      "balance": 1750,
+      "balance": 3500,
       "todayDate": "2026-11-24",
-      "todayEarnings": 1750,
+      "todayEarnings": 3500,
       "tapPoints": 0,
       "tapCount": 0,
       "tapDailyPoints": 0,
       "tapDailyEarnings": 0,
-      "videoEarnings": 1750,
+      "videoEarnings": 3500,
       "claimedVideos": [
-        "seyi-vibes"
+        "seyi-vibes",
+        "bigger-escapes"
       ],
       "processedEvents": [
-        "b99f986b-33a3-4810-9775-803f86c7141e"
+        "b99f986b-33a3-4810-9775-803f86c7141e",
+        "8da6d475-8693-4db7-9d3b-723fa9ab41e9"
       ],
       "history": [
+        {
+          "id": "8da6d475-8693-4db7-9d3b-723fa9ab41e9",
+          "title": "Video Rewards",
+          "subtitle": "For Bigger Escapes",
+          "amount": 1750,
+          "date": "2026-11-24T14:22:00.161Z",
+          "currency": "NGN"
+        },
         {
           "id": "b99f986b-33a3-4810-9775-803f86c7141e",
           "title": "Video Rewards",
