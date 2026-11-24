@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-4c804a2f889ade2cbd4d3a22",
+      "fullName": "Mercy Johnson",
+      "username": "oyiza",
+      "email": "oyizajohnson2009@gmail.com",
+      "phone": "07026864464",
+      "passwordHash": "543779503e0572c2ec2cce72357e43c7:131f5064abe652104bd8bf6dc2c625627f9f1ca76be894a9b3f3519bcc8ddc6ad6625e5cbd0dedde3c943d5e9465f4913a5a34ce83c8c32ba7ba2a6c09017e9e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7aca4338ada6d0e5b054823a",
+      "createdAt": "2026-11-24T15:45:36.750Z",
+      "activatedAt": "2026-11-24T15:45:36.750Z"
+    },
+    {
       "id": "USER-3e02af3782cd294e6c448249",
       "fullName": "Joy Odali",
       "username": "joy43",
