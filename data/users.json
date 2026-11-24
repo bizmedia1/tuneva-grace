@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5bc0bc80f6ee40503e003e6a",
+      "fullName": "Animba Esther chinaza",
+      "username": "uniquequeens",
+      "email": "uniquequeens247@gmail.com",
+      "phone": "08142895942",
+      "passwordHash": "a24c911ace8f66702dd90be743124031:b1349f91b90c5d680b927bd4d699a5b2344d401469ee26fa3f1d742abe7ef1b5ca9b1db374d3be3eb105ebee0f41a3f2cc0e37efce07bd1b66adb64d82c0815e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-0ac5ef7229388b6c28533864",
+      "createdAt": "2026-11-24T01:06:15.900Z",
+      "activatedAt": "2026-11-24T01:06:15.900Z"
+    },
+    {
       "id": "USER-d35ddc4a2361782ac3f7e924",
       "fullName": "Lucky boy",
       "username": "onome",
