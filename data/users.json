@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5388f897489ae464b0c552ea",
+      "fullName": "Esther Etim",
+      "username": "daisy",
+      "email": "esthertim101@gmail.com",
+      "phone": "08132592453",
+      "passwordHash": "ed57cc8c9f72459a373369bfa460616a:cde6a83e4cd81ef9b648a2ea2ea674fabc852098ccc8e727f587a53d420f0aa13b7684d4736244a15dccd104556b32fcccc8df6c7535c81dfc05fe77a533bc00",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-198396a85a7f1255d0eaca72",
+      "createdAt": "2026-11-24T10:52:21.820Z",
+      "activatedAt": "2026-11-24T10:52:21.820Z"
+    },
+    {
       "id": "USER-d3e8d51cbc428da206cbd8ed",
       "fullName": "Meduoye blessing tejumola",
       "username": "blessing",
