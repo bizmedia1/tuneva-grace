@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-49d436affc5ab4f2b0eee76e",
+      "fullName": "Sewanu Deborah",
+      "username": "ife16",
+      "email": "mau16.yon@gmail.com",
+      "phone": "09045418496",
+      "passwordHash": "46bca5346680fa96502a4888d876fa15:d3972558b2a221fb987743bd435ed1b3125f23a254ef37e35dc75631e0ace117b43fa15917e84781e3e1e29f704f9cfaa0574b6d3a4f67209c6b172605522dbe",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-6fca1d8ef801e3cc440ba635",
+      "createdAt": "2026-11-24T17:45:16.801Z",
+      "activatedAt": "2026-11-24T17:45:16.801Z"
+    },
+    {
       "id": "USER-745e63bc128da84b17fb81ac",
       "fullName": "Chukwuma fidelis ugwu",
       "username": "chukwuma",
