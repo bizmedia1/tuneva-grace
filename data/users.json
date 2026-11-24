@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-745e63bc128da84b17fb81ac",
+      "fullName": "Chukwuma fidelis ugwu",
+      "username": "chukwuma",
+      "email": "donwale001@gmail.com",
+      "phone": "08163864555",
+      "passwordHash": "61edea2730d268f6d1998b826bbac82f:6c4761b1ed6c7a1ea67c962eab00a7dc3006720cf30002bf48c697f23a6307e5199b7e027b0666916496f633edfc48a592c5d0a1ba3b7d6518e2369a840fa12d",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-fa70bd4bd25889304265cb1f",
+      "createdAt": "2026-11-24T17:04:56.978Z",
+      "activatedAt": "2026-11-24T17:04:56.978Z"
+    },
+    {
       "id": "USER-4c804a2f889ade2cbd4d3a22",
       "fullName": "Mercy Johnson",
       "username": "oyiza",
