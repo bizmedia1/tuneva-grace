@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-232327e3b37fbdaea78ae950",
+      "fullName": "Njike David",
+      "username": "njikedavid1462",
+      "email": "njikedavid25@gmail.com",
+      "phone": "09038531462",
+      "passwordHash": "fdc39202f80fa1e79569a9c98c769fee:20612ab725e2eb4e5019c3cc90b279abf03456e5488fafc850e466636d1b2e362c0630bafec62daf4e069280cbbff6d9ca9411eeb94de67b3865154ce7ff32c9",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f27bbd2715cf680fc0267600",
+      "createdAt": "2026-11-24T15:36:55.296Z",
+      "activatedAt": "2026-11-24T15:36:55.296Z"
+    },
+    {
       "id": "USER-1fe19264289a1b35f6cfb2f0",
       "fullName": "Olufolahan Olamide",
       "username": "lammyde22",
