@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-3c01d0e06a98b1295fd2bc53",
+      "fullName": "Morain Emmanuel",
+      "username": "gift",
+      "email": "pinkeygift99@gmail.com",
+      "phone": "09131326892",
+      "passwordHash": "96ff5c8743d6b6bb3e4cce6767c72fe6:d470e212a3343ce5a681536697fb42f41ac2085714909c61c375f187ff23ed6144a4a8f153b393329dc3d07abca3487deb7073290a714a7e66d4f19bfc846336",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-c69c5f50617c296844bc809a",
+      "createdAt": "2026-11-24T21:56:14.882Z",
+      "activatedAt": "2026-11-24T21:56:14.882Z"
+    },
+    {
       "id": "USER-bf281d5ac05b7c5ef0e1f246",
       "fullName": "Confidence ferdinard",
       "username": "confidence",
