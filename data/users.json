@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e17ceb2a7f5786477420da21",
+      "fullName": "Olajide jesutofunmi",
+      "username": "temiloluwa",
+      "email": "olajidejesutofunmi75@gmail.com",
+      "phone": "09124796534",
+      "passwordHash": "00c97a823ef0e5a06d864b959e6a5a7e:078e7d1d4ed272350e5a121b72d9ad7ecfc1f26b280cfc7449d06d81708775c0409d91f731afb3e703cc9b32993d84ff18728f1f123ac33dada76341d10daebc",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1c902f17aaae4328a8e8e541",
+      "createdAt": "2026-11-24T21:57:05.814Z",
+      "activatedAt": "2026-11-24T21:57:05.814Z"
+    },
+    {
       "id": "USER-3c01d0e06a98b1295fd2bc53",
       "fullName": "Morain Emmanuel",
       "username": "gift",
