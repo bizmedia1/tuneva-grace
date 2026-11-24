@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-84afb802033eb406af4d69b9",
+      "fullName": "Loveth Johnson",
+      "username": "lila",
+      "email": "love09@gmail.com",
+      "phone": "07033836835",
+      "passwordHash": "7458635b3ddc5c31a22478da5be1ea87:1ed1a8fcef5371ffe44f9d248c929c67ddff35866b69e017546f34c0098f0aac7b4cf6cf054eb89ed2105e425c416a0e9c215230193264c8598f9981598ee998",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-b81f1e13deab04146673332e",
+      "createdAt": "2026-11-24T12:38:58.876Z",
+      "activatedAt": "2026-11-24T12:38:58.876Z"
+    },
+    {
       "id": "USER-499f6e9cc3549a45c730a01b",
       "fullName": "Omaliugo Esther",
       "username": "omaliugo",
