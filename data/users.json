@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-bd5a0907fccd1cf309e7c0b9",
+      "fullName": "Okonye Blessing",
+      "username": "chdimmaone",
+      "email": "blessingokonye111@gmail.com",
+      "phone": "08139434928",
+      "passwordHash": "ee7044504b008f1bf31a2d0b22f412af:2cb38df304c3f1f700513feecc37c9dcebfd8433cfc6f63e451d2bed459d074bf7bd2c099736da6ef3a997fb9beb28515bb2897fb02e2377b444fb041566ba5d",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-246b3e3c927c960b591f2d83",
+      "createdAt": "2026-11-24T14:27:30.569Z",
+      "activatedAt": "2026-11-24T14:27:30.569Z"
+    },
+    {
       "id": "USER-e0a7a5e45b173b43f130c55b",
       "fullName": "ABIODUN ALLI",
       "username": "ebony11",
