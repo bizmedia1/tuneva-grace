@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-7c76de97a7015a91f93cf7d0",
+      "fullName": "Olabode Michael",
+      "username": "mikido",
+      "email": "michaelolabode686@gmail.com",
+      "phone": "07015229615",
+      "passwordHash": "e681bf2a59ee2ad494ceba0a5d0f4bad:44de94e1e3c14246dbbab3cabffb175d039444e6728a40049aba51bef2a66eb432664f84aa17d971ab44780a233bef6228a3ef2be9fe0636b6264481fab49270",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-e74674ba558f394e28a6c3c5",
+      "createdAt": "2026-11-24T04:15:29.468Z",
+      "activatedAt": "2026-11-24T04:15:29.468Z"
+    },
+    {
       "id": "USER-5bc0bc80f6ee40503e003e6a",
       "fullName": "Animba Esther chinaza",
       "username": "uniquequeens",
