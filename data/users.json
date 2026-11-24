@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-7347c35776a36e7c3cf6c2b4",
+      "fullName": "Sarah Collins",
+      "username": "muna001",
+      "email": "26sarahcollins@gmail.com",
+      "phone": "08030819909",
+      "passwordHash": "26ea4f2f4a3dc9d5c57daf76881f173d:4c4c9526c52e976ac5d70b01637c66fcceecb4001ccf0f3d97ebe577d56c71993b424f2d90087f4e9be43c8a7411a40c4ce1d7b2e37889d3a7f3715d23b145df",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1e70ad1049af95c85278aece",
+      "createdAt": "2026-11-24T18:35:13.286Z",
+      "activatedAt": "2026-11-24T18:35:13.286Z"
+    },
+    {
       "id": "USER-5e7ab8071ee7e6fd46219598",
       "fullName": "Dorcas  Sunday",
       "username": "sunday",
