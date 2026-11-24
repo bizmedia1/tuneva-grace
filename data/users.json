@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-bf4cc7a95be7a3a7092c4e03",
+      "fullName": "Chinenye Chibueze",
+      "username": "chibuezechinenye882",
+      "email": "chibuezechinenye882@gmail.com",
+      "phone": "07036738961",
+      "passwordHash": "921bce4816d7b2bfd2ae42f6ca8c7650:fb001c81f789bb835970b2feeeeb742541bd23792a865dd1ae3c7f8e9233cfa6f3717b9fe4eb6b881cf39b6fd8c405ea42d5d8192e3334b48325c11357400114",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-e3d7cf1620c6575afaa3efaf",
+      "createdAt": "2026-11-24T11:03:45.866Z",
+      "activatedAt": "2026-11-24T11:03:45.866Z"
+    },
+    {
       "id": "USER-5449ab0d07e45883d9fe41b2",
       "fullName": "Oluwafikunmi olamiposi",
       "username": "oluwafikunmi18",
