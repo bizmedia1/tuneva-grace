@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-3e02af3782cd294e6c448249",
+      "fullName": "Joy Odali",
+      "username": "joy43",
+      "email": "odalijoy49@gmail.com",
+      "phone": "07011862186",
+      "passwordHash": "297b19cefba6a69e891e4ed75ff7371b:01e6ffa041e0a5b37ef088318c013079e70b54eb9c40917f14b5ae76b6de2ebdbf0a1eba52174e34eb1c02796da42c2c067e2d6f100e938a2dd3821ee7f6d72f",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-fc44691447883b3d88f1491f",
+      "createdAt": "2026-11-24T15:37:53.080Z",
+      "activatedAt": "2026-11-24T15:37:53.080Z"
+    },
+    {
       "id": "USER-232327e3b37fbdaea78ae950",
       "fullName": "Njike David",
       "username": "njikedavid1462",
