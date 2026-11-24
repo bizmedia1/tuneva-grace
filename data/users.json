@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-44f8a0bfd9fae1eb461b03bc",
+      "fullName": "Blessing jan",
+      "username": "blessing11",
+      "email": "blessingjan@gmail.com",
+      "phone": "08069421561",
+      "passwordHash": "aa721f2a3b724f45a4ddbd67eb6c02e5:913b9423512ec8071d63d39f5b42f225a7d0514acbb14ad4be5e8515910a37af580fbd26dc59fd102af9065e968b741f784834f744bf28eb9c94969a3b92d4f5",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1b5642e44b8cace3a8935fe1",
+      "createdAt": "2026-11-24T10:53:22.513Z",
+      "activatedAt": "2026-11-24T10:53:22.513Z"
+    },
+    {
       "id": "USER-5388f897489ae464b0c552ea",
       "fullName": "Esther Etim",
       "username": "daisy",
