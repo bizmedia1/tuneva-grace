@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d95bc8ff97ad24bec0964b2e",
+      "fullName": "Chinasa okwudili",
+      "username": "chichi2",
+      "email": "ujunwaa908@gmail.com",
+      "phone": "07065105899",
+      "passwordHash": "41945add4df3e89349c4f56819d67115:c069717a336c7dc0391584ef5f7946aa6192ff5cbb6c774449a5dba60a76b87c11d6e5617a5728ac13257fce4bc7babc8adccf579b33ff4fa4575bc7cbf1ebfb",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-3a90edb02889212f15b0ff1a",
+      "createdAt": "2026-11-24T13:08:25.546Z",
+      "activatedAt": "2026-11-24T13:08:25.546Z"
+    },
+    {
       "id": "USER-171d43b2d917510d7b6bd92c",
       "fullName": "Hope okafor",
       "username": "hope1",
