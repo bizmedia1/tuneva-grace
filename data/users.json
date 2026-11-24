@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-18bcd00fc0a2281d0ca7888f",
+      "fullName": "Mary ameh",
+      "username": "mary509",
+      "email": "amehm280@gmail.com",
+      "phone": "09164214079",
+      "passwordHash": "dbb1f61b059c5e07050ce0819a31f30a:4faa1230a01417fdbcf63b729ef5d7d5ef4f0f78439654f09d6c41601edf5c90e073e2f439316328f6daa9f870b179dab35e40547d4fa020ba614f49b361ffc7",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-0102bb02bca26a40ade4b64b",
+      "createdAt": "2026-11-24T15:31:25.765Z",
+      "activatedAt": "2026-11-24T15:31:25.765Z"
+    },
+    {
       "id": "USER-03320b83f1c60e3b5811fe77",
       "fullName": "Nwachukwu Blessing",
       "username": "00011adorablebaby",
