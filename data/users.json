@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-499f6e9cc3549a45c730a01b",
+      "fullName": "Omaliugo Esther",
+      "username": "omaliugo",
+      "email": "omaliugodaniels@gmail.com",
+      "phone": "07049383834",
+      "passwordHash": "9ec5b859ee173f01634cbbf14a397bcf:0fb6a639285492724de69147a2e82b1ca070458b4368ab06665b5dd2fc07ddf93ace8bfadda951779d80a92c3dd0af38c95a5e1d354b6b7e79d51810596b6037",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-23bf9b0e3e9807e844c416fa",
+      "createdAt": "2026-11-24T12:16:59.401Z",
+      "activatedAt": "2026-11-24T12:16:59.401Z"
+    },
+    {
       "id": "USER-0d42b28037d5faf6264d8cae",
       "fullName": "Emmanuel Odey",
       "username": "emmy",
