@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-89a0f05e9ea7d4cd314fc0ff",
+      "fullName": "Faith Peter ochanya",
+      "username": "faith_001",
+      "email": "ochanyapeterfaith@gmail.com",
+      "phone": "07062450989",
+      "passwordHash": "615d8ca3bdcad1c8a604db69463e0e92:76243b4babd431090857d293fb4238b7f837236ad5c19ff4d6b84bf75df2444d8cdcb3c687d3d54dadcb7ea754d5dcd32ee603a2c4108dd65b5a5df76d786d12",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1804320be84689d5d2774787",
+      "createdAt": "2026-11-24T11:05:16.450Z",
+      "activatedAt": "2026-11-24T11:05:16.450Z"
+    },
+    {
       "id": "USER-bf4cc7a95be7a3a7092c4e03",
       "fullName": "Chinenye Chibueze",
       "username": "chibuezechinenye882",
