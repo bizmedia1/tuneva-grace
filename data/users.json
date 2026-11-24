@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5307b8f61a70e94d7a19abfb",
+      "fullName": "Onwa Chidera",
+      "username": "promise1",
+      "email": "promise22@gmail.com",
+      "phone": "07040755966",
+      "passwordHash": "9acc3e3010f8a87bd96145ba8c6d6669:7ca35030d8f6005642e4fc9f63e6039c6f19d2d6c5d3ecfa580894705847d772e4a16373d4df622d1490e4c37d53038c888a983f9c0ba46da29927ecf64dabba",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f1c30230a73a6b3946443b98",
+      "createdAt": "2026-11-24T13:20:06.125Z",
+      "activatedAt": "2026-11-24T13:20:06.125Z"
+    },
+    {
       "id": "USER-d95bc8ff97ad24bec0964b2e",
       "fullName": "Chinasa okwudili",
       "username": "chichi2",
