@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a5cfb37b43e95465fb150ae0",
+      "fullName": "Flora obukowho",
+      "username": "flora2298",
+      "email": "floraobukowho937@gmail.com",
+      "phone": "09021122298",
+      "passwordHash": "07f7d207e1786cd8022e5f0812a66e85:f241e5c663bc060c941951656e80061ed5a89b84dc72b3bd56becba55d39be0e3c8f77344b10484467c7a559e825ec3206ea47204b318dbd5b325e2b171d1e45",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-90b6c1ea66269459f45a286b",
+      "createdAt": "2026-11-24T11:59:46.101Z",
+      "activatedAt": "2026-11-24T11:59:46.101Z"
+    },
+    {
       "id": "USER-fb711e4f1dbc740b3a817755",
       "fullName": "Ngozi Dominion",
       "username": "dommyboy",
