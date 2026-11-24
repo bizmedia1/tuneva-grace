@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-171d43b2d917510d7b6bd92c",
+      "fullName": "Hope okafor",
+      "username": "hope1",
+      "email": "hopeokafor555@gmail.com",
+      "phone": "09091459457",
+      "passwordHash": "1b369cfec3a9eb66d1d84c07c59ee3a0:387f8d61ce278fa9433e8bca1a23e0e16382750b3683b016a5469cf5d072bce5cecb628ba4d7af781d567cfec201d305b1827219488441a10d7f46df286209f0",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-af697e298d980c0e9e52a2d3",
+      "createdAt": "2026-11-24T12:46:44.236Z",
+      "activatedAt": "2026-11-24T12:46:44.236Z"
+    },
+    {
       "id": "USER-84afb802033eb406af4d69b9",
       "fullName": "Loveth Johnson",
       "username": "lila",
