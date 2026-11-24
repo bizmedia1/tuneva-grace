@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-0d42b28037d5faf6264d8cae",
+      "fullName": "Emmanuel Odey",
+      "username": "emmy",
+      "email": "eodey4132@gmail.com",
+      "phone": "07042856395",
+      "passwordHash": "49d2e3e32a18cbecf69334beee126228:61a07a05757272b6cbdd752196a451301cf7f66f3dac98ae40b368f89132e08f2c8039feea57f0a70e54a240bdf3719629b5b4ae528c6d55927785ec9acd1a6a",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-29ae4607aa1ad2564eafe3d1",
+      "createdAt": "2026-11-24T12:15:42.976Z",
+      "activatedAt": "2026-11-24T12:15:42.976Z"
+    },
+    {
       "id": "USER-080563cb1009ee7630f03776",
       "fullName": "Olaitan Adeyemi",
       "username": "adetan",
