@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-6ccf9fa52a24ea260f18bc72",
+      "fullName": "Alaekeka ifechukwu",
+      "username": "ife500",
+      "email": "alaekekai@gmail.com",
+      "phone": "09134024773",
+      "passwordHash": "3a6c8c473e073f8454da4e61f3289b37:e793c09ca8e55614a6af2ce1d9bca16f01e2d587d26391f107586a3ea4546610b5d4d390b72931ab9b2c7abff6903182adfb0f5d60c93fb5ab9681b5ff68c5ff",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-fc5c7665f21aa16976effe9e",
+      "createdAt": "2026-11-24T11:07:46.963Z",
+      "activatedAt": "2026-11-24T11:07:46.963Z"
+    },
+    {
       "id": "USER-89a0f05e9ea7d4cd314fc0ff",
       "fullName": "Faith Peter ochanya",
       "username": "faith_001",
