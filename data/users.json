@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-1453c189473c344768a37367",
+      "fullName": "Yusuf Aminu",
+      "username": "peres",
+      "email": "yu2s3ufam5in6u@gmail.com",
+      "phone": "09132812388",
+      "passwordHash": "d0c1ea898556cf63e556d2a2049dd05b:2fe735b4b87ceb3892d465ef3277274828e0a2154b82e475f106bb601fee4a3a1f5be872e0e74bce50f951b681ab78a89124364ef84f436ff564a48a5a2e4ebe",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-0b0ead5612a215961b828097",
+      "createdAt": "2026-11-24T10:54:30.097Z",
+      "activatedAt": "2026-11-24T10:54:30.097Z"
+    },
+    {
       "id": "USER-4d559a44c90db800a297376b",
       "fullName": "Moses Opara",
       "username": "moses111",
