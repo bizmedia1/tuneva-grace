@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d3e8d51cbc428da206cbd8ed",
+      "fullName": "Meduoye blessing tejumola",
+      "username": "blessing",
+      "email": "meduoyeblessing121@gmail.com",
+      "phone": "08059338989",
+      "passwordHash": "b302e05ee421bbafc3831eb6b256ed3d:874ea21c661d34be1ecf2cf4bfa760d546edc006b71af080783fb18db01dcc91ddb8ac7a9d14b3e25eb2a4d9108c6bad50c69524d98cd674ae484f75b75cb388",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-5adfc4e032a77f7de92962ea",
+      "createdAt": "2026-11-24T10:45:09.194Z",
+      "activatedAt": "2026-11-24T10:45:09.194Z"
+    },
+    {
       "id": "USER-7c76de97a7015a91f93cf7d0",
       "fullName": "Olabode Michael",
       "username": "mikido",
