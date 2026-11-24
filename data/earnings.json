@@ -57929,13 +57929,13 @@
       "lastTapAt": 0
     },
     "USER-fb711e4f1dbc740b3a817755": {
-      "balance": 4350,
+      "balance": 4750,
       "todayDate": "2026-11-24",
-      "todayEarnings": 4350,
-      "tapPoints": 9100,
-      "tapCount": 26,
-      "tapDailyPoints": 9100,
-      "tapDailyEarnings": 2600,
+      "todayEarnings": 4750,
+      "tapPoints": 10500,
+      "tapCount": 30,
+      "tapDailyPoints": 10500,
+      "tapDailyEarnings": 3000,
       "videoEarnings": 1750,
       "claimedVideos": [
         "seyi-vibes"
@@ -57967,9 +57967,45 @@
         "84554e63-65f9-4d1a-ab31-7e68a1e5f910",
         "5387ce9f-bddd-4278-94f6-562b02fbc4b1",
         "f103afa6-7c91-43ec-b39b-35a9e91f1723",
-        "023e144d-b44a-4338-ac9d-b484b95f00a9"
+        "023e144d-b44a-4338-ac9d-b484b95f00a9",
+        "3f0847b4-da0c-4f4e-8e87-5321aa900d5d",
+        "29f4846b-d6f2-4552-b374-47f7a4093266",
+        "a08305f6-8810-4723-907b-42e4bb9fe234",
+        "207eae97-64c4-4d72-bd93-8951a9353ed2"
       ],
       "history": [
+        {
+          "id": "207eae97-64c4-4d72-bd93-8951a9353ed2",
+          "title": "Tap Rewards",
+          "subtitle": "Tap Tap",
+          "amount": 100,
+          "date": "2026-11-24T12:04:26.709Z",
+          "currency": "NGN"
+        },
+        {
+          "id": "a08305f6-8810-4723-907b-42e4bb9fe234",
+          "title": "Tap Rewards",
+          "subtitle": "Tap Tap",
+          "amount": 100,
+          "date": "2026-11-24T12:04:26.709Z",
+          "currency": "NGN"
+        },
+        {
+          "id": "29f4846b-d6f2-4552-b374-47f7a4093266",
+          "title": "Tap Rewards",
+          "subtitle": "Tap Tap",
+          "amount": 100,
+          "date": "2026-11-24T12:04:26.709Z",
+          "currency": "NGN"
+        },
+        {
+          "id": "3f0847b4-da0c-4f4e-8e87-5321aa900d5d",
+          "title": "Tap Rewards",
+          "subtitle": "Tap Tap",
+          "amount": 100,
+          "date": "2026-11-24T12:04:26.709Z",
+          "currency": "NGN"
+        },
         {
           "id": "023e144d-b44a-4338-ac9d-b484b95f00a9",
           "title": "Tap Rewards",
