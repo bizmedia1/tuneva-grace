@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-cd2063967017c1ef66d4c283",
+      "fullName": "PETER DESTINY OKLO",
+      "username": "peteroklodestiny",
+      "email": "peteroklodestiny@gmail.com",
+      "phone": "08108581125",
+      "passwordHash": "340babd83d2726049410fa93bdb6356d:e2822577fa9e854a16d3e4716439d1f72a4e24c1bf5c9a37f022597c12df21f3579386cd6eb53cc78d9e97c757b2d405a44b0add344e8fec6ce411eb85225ea3",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-877fa490c6b36da4a59cc3a5",
+      "createdAt": "2026-11-25T11:16:06.881Z",
+      "activatedAt": "2026-11-25T11:16:06.881Z"
+    },
+    {
       "id": "USER-f5af2eb58cbb9edb5820b2a0",
       "fullName": "Jesus baby",
       "username": "jesus",
