@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-9ece2102b8b4db35612d69fd",
+      "fullName": "Greater Dimension",
+      "username": "dimension123",
+      "email": "abimbolaakinyomi5@gmail.com",
+      "phone": "08131000410",
+      "passwordHash": "11fbef46bb9814b0e94c0e1ab3dcf823:cfbc31682f0b7f50e29bcdb0cb15ffe7beeff82bb6f7d7f818ef82ba1c53c55a96b704f00874710197fb01ca4429feb4c07280909a73d37c66adaf9a58fc0415",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-98d25387ef5d663f050b3113",
+      "createdAt": "2026-11-25T18:57:34.267Z",
+      "activatedAt": "2026-11-25T18:57:34.267Z"
+    },
+    {
       "id": "USER-52d10fe8ec1a55ea8f4fcf5d",
       "fullName": "Eze Joseph",
       "username": "ezebless7",
