@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-0da5ed668f3d62e643e434b9",
+      "fullName": "Chinonso Chijioke",
+      "username": "chinonso",
+      "email": "uzoaku09@gmail.com",
+      "phone": "07030499974",
+      "passwordHash": "5dcbc4812670a64a2e846a18d92d9eed:69e9627eed41213b61785ade1c576ac7c74a543252fdff17250e247bd64e49bd3206417587fa140995fd7ee8c341f0d17ef1db847fed6d2c99688e4122739c62",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-07477e592cb7b8d385e89eea",
+      "createdAt": "2026-11-25T19:58:18.688Z",
+      "activatedAt": "2026-11-25T19:58:18.688Z"
+    },
+    {
       "id": "USER-9ece2102b8b4db35612d69fd",
       "fullName": "Greater Dimension",
       "username": "dimension123",
