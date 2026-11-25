@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-dcc1bbe1b61f1e0109190b5d",
+      "fullName": "Ezekiel  Victor",
+      "username": "ezekiel",
+      "email": "philipsarah209@gmail.com",
+      "phone": "08108031865",
+      "passwordHash": "5b75d928b16081d9e69a6f228be09bbf:91f737c59b7a41f76d40ddee7d55503a52acb4ac66ae32c2011c486bd7a3b84bf5c2e953dda5760c719f2a331a8c4b4129cbf9e2bc10828243be508f9572b2dd",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-03ea57f023bcef12251c5b58",
+      "createdAt": "2026-11-25T05:38:40.893Z",
+      "activatedAt": "2026-11-25T05:38:40.893Z"
+    },
+    {
       "id": "USER-e17ceb2a7f5786477420da21",
       "fullName": "Olajide jesutofunmi",
       "username": "temiloluwa",
