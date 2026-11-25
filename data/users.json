@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-be8ab3bb1dfe53416214df4c",
+      "fullName": "Eze Emmanuel",
+      "username": "emm",
+      "email": "eze739682@gmail.com",
+      "phone": "09130054922",
+      "passwordHash": "8c3741a47eb12eea19e61bcfd5db4c35:36a73ddf08c0cc67e3cf95498726313554b5922500e7a2035c19d99963ac7816c28132359f9cbdb5bb42b413f6a592c7dbbe667d8266c50770c2a2d137f5a6df",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-ab791a611a1f6baa5c21a511",
+      "createdAt": "2026-11-25T06:07:25.414Z",
+      "activatedAt": "2026-11-25T06:07:25.414Z"
+    },
+    {
       "id": "USER-dcc1bbe1b61f1e0109190b5d",
       "fullName": "Ezekiel  Victor",
       "username": "ezekiel",
