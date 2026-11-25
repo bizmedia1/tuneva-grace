@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-72b51072d43be72f986029e1",
+      "fullName": "Thomas chioma",
+      "username": "chibaby23",
+      "email": "annetorchris@gmail.com",
+      "phone": "09125089790",
+      "passwordHash": "1507e19860011520f191d4b1629c5a74:80d4f63065f366408ac7580a3c99b7267e61268d4dfba5579b0f0832cac5913da88f95ffe806916c7fa3d2f927c69d540c99098473b7b11c9f54c8dea00bab29",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1814c5ecd7e0cc8f8f4028de",
+      "createdAt": "2026-11-25T11:52:48.264Z",
+      "activatedAt": "2026-11-25T11:52:48.264Z"
+    },
+    {
       "id": "USER-cd2063967017c1ef66d4c283",
       "fullName": "PETER DESTINY OKLO",
       "username": "peteroklodestiny",
