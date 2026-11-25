@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-86daeb9e2fbf230d0b71101e",
+      "fullName": "Garbaty  aboubakar",
+      "username": "mazamaza",
+      "email": "goronyo@gmail.com",
+      "phone": "08065430446",
+      "passwordHash": "03b25e19caf0da7b1c6ec53d28a8306c:c044b09cfe471b92d920a70f066b4e7a87d92ca0ceed280b984584d9a7efd03a3ee45577e55eed111b54c634c99e730d30bd58223b972282f58b861ec8f5bdd6",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f2868ba910dd1456c82d3b4f",
+      "createdAt": "2026-11-25T13:42:06.747Z",
+      "activatedAt": "2026-11-25T13:42:06.747Z"
+    },
+    {
       "id": "USER-72b51072d43be72f986029e1",
       "fullName": "Thomas chioma",
       "username": "chibaby23",
