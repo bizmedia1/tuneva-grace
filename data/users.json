@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-8906dcfbe2d4563c67d9695d",
+      "fullName": "Esther ogbechi",
+      "username": "esther998",
+      "email": "estheromaliugo@gmail.com",
+      "phone": "07032454437",
+      "passwordHash": "694a536d9ab4ca504182b4be3831119a:ed59866e86ac1344b788a799fb766bdc40b0e9fc7b4cbcd67bea241233021358f56683bd9d4e6230de144b652918a88d60bf58829bba8f3f76086ceadf79f52e",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-8ed5bc1c6cb8d4b453f5ad9a",
+      "createdAt": "2026-11-25T15:15:59.349Z",
+      "activatedAt": "2026-11-25T15:15:59.349Z"
+    },
+    {
       "id": "USER-5de1500245ea1d6cd4a34487",
       "fullName": "Friday Barine",
       "username": "azazo9",
