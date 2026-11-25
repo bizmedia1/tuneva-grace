@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-9e858ac6e9bc6f7208032a05",
+      "fullName": "Gift Johnson",
+      "username": "gift40836",
+      "email": "gift40836@gmail.com",
+      "phone": "08104792646",
+      "passwordHash": "449468335fe56305cb46036d6487bec0:7b83c6e5f17d49340cdc4af677eb2a39f561ea746c35bc7c82bf4fa68324888844c6c86bf4c198d7ea6daa9332b8d0d4c59e9015e6baf6a1570f2f79a899cc0f",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-f2dff07fbc691142112c171d",
+      "createdAt": "2026-11-25T20:20:50.147Z",
+      "activatedAt": "2026-11-25T20:20:50.147Z"
+    },
+    {
       "id": "USER-0da5ed668f3d62e643e434b9",
       "fullName": "Chinonso Chijioke",
       "username": "chinonso",
