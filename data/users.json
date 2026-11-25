@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5de1500245ea1d6cd4a34487",
+      "fullName": "Friday Barine",
+      "username": "azazo9",
+      "email": "danielbarine0@gmail.com",
+      "phone": "09074447233",
+      "passwordHash": "10b7be58ec6bbc1c4aec788de40dfe3d:064859412286a48b1c40aca66778d5cb69d1dda9894592245feaf12e70795756e6e5ce5930ec312f2153ee8e08a3c81a717aa4122d88ab44dc136f1ede8dc094",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-799b186f19250c3bbdab16a0",
+      "createdAt": "2026-11-25T14:21:48.871Z",
+      "activatedAt": "2026-11-25T14:21:48.871Z"
+    },
+    {
       "id": "USER-86daeb9e2fbf230d0b71101e",
       "fullName": "Garbaty  aboubakar",
       "username": "mazamaza",
