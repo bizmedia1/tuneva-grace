@@ -84065,6 +84065,43 @@
         }
       ],
       "lastTapAt": 0
+    },
+    "USER-cd2063967017c1ef66d4c283": {
+      "balance": 3500,
+      "todayDate": "2026-11-25",
+      "todayEarnings": 3500,
+      "tapPoints": 0,
+      "tapCount": 0,
+      "tapDailyPoints": 0,
+      "tapDailyEarnings": 0,
+      "videoEarnings": 3500,
+      "claimedVideos": [
+        "bigger-fun",
+        "bigger-escapes"
+      ],
+      "processedEvents": [
+        "6c8d58d2-dac6-41ab-bba6-f0e3b74343e9",
+        "671ae878-ee70-4f3e-a16e-1fe71c2e8751"
+      ],
+      "history": [
+        {
+          "id": "671ae878-ee70-4f3e-a16e-1fe71c2e8751",
+          "title": "Video Rewards",
+          "subtitle": "For Bigger Escapes",
+          "amount": 1750,
+          "date": "2026-11-25T11:42:30.789Z",
+          "currency": "NGN"
+        },
+        {
+          "id": "6c8d58d2-dac6-41ab-bba6-f0e3b74343e9",
+          "title": "Video Rewards",
+          "subtitle": "For Bigger Fun",
+          "amount": 1750,
+          "date": "2026-11-25T11:42:30.789Z",
+          "currency": "NGN"
+        }
+      ],
+      "lastTapAt": 0
     }
   }
 }
