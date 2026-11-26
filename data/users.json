@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-9fac1079d2104f939ef98969",
+      "fullName": "Emmanuel Dennis king",
+      "username": "emmzyco",
+      "email": "emmanuelking0@gmail.com",
+      "phone": "08161630740",
+      "passwordHash": "9fa102e1101b01b8bc0df5fd8063a23c:5c153cafb88ecffa93631640d7a8e128812fcaf0e314fdda361230fec2331db465b21bade7622313d8f6b3e9bd381029fd0bc88a2848e7df75bdf98fc9874eb1",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-e116ee489849c45eaa9b2ee1",
+      "createdAt": "2026-11-26T18:52:20.957Z",
+      "activatedAt": "2026-11-26T18:52:20.957Z"
+    },
+    {
       "id": "USER-1dc8c0983bfbebd17a411f06",
       "fullName": "Okosun Divine",
       "username": "dvine",
