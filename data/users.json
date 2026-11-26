@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a3fdac8f28e88ee12490da2a",
+      "fullName": "Favour Chiekwe Chekwubechukwu",
+      "username": "fave123",
+      "email": "favourchiekwe6@gmail.com",
+      "phone": "07043624205",
+      "passwordHash": "e4f27510b00901b42e65c2e0ec5827eb:0baf0674080e3cb3d47f0711ae2a8c28f283b4810b1806bcea6f1febf1580bf4d3faf380e4f8e3f0b27a696943775784bff3b004f8f84efc8971cfc40db33579",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-867dd3450827289cd5ee95b5",
+      "createdAt": "2026-11-26T21:46:17.565Z",
+      "activatedAt": "2026-11-26T21:46:17.565Z"
+    },
+    {
       "id": "USER-2b21bcceac1cb89b35c0d79e",
       "fullName": "Humble Albert",
       "username": "humble",
