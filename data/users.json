@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e7a7b85375ce66ded7ee0f99",
+      "fullName": "Obum Emmanuel",
+      "username": "obum",
+      "email": "manuel2007goat@gmail.com",
+      "phone": "08128673328",
+      "passwordHash": "a2cbcf210012814b963271004e7e9178:ca09867cd26f87160da49f0af94f2c18169faa545c2211287ef593a73dfa1e4f9b72481bac9bf1e8ff8b7f31a444e972cd2c5839583409afb57ace4335fbbdae",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-0f5f94ed577a0a4b92a4bd99",
+      "createdAt": "2026-11-26T06:00:35.540Z",
+      "activatedAt": "2026-11-26T06:00:35.540Z"
+    },
+    {
       "id": "USER-276f1c3f03a55a491e8630d1",
       "fullName": "Michael uzoma",
       "username": "snazzy",
