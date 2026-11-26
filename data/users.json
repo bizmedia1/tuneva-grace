@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-57b39f50657c8f5f920103ab",
+      "fullName": "lbrahim Safana",
+      "username": "lbrahim",
+      "email": "safanai261@gmail.com",
+      "phone": "07077959731",
+      "passwordHash": "5d8764d73fefb822d9f0f6dad709df72:bfeeb7ba1a4cd1fac72109564af321271a31d115789cc7cecbeb1e3567983334b8d384835c767b8c805dffc5f2bd174f18ce1e86b40a35118f78ba85f95001fd",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7407b798be89807b668f0eac",
+      "createdAt": "2026-11-26T22:13:43.011Z",
+      "activatedAt": "2026-11-26T22:13:43.011Z"
+    },
+    {
       "id": "USER-a3fdac8f28e88ee12490da2a",
       "fullName": "Favour Chiekwe Chekwubechukwu",
       "username": "fave123",
