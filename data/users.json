@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a7fdb18fd03021ac03cad160",
+      "fullName": "Deborah mercy",
+      "username": "deborah001",
+      "email": "deborahmercy23@gmail.com",
+      "phone": "07063461986",
+      "passwordHash": "d86213f244d43fda81a474c42f3e020d:6329880390a6f97d3a87cce0db7331338e98a428949ad5739734cae807aa13a10666f7b2c661da3ae5672c7aed34b07e5389c516d9d0ea548899ef41b0f02083",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7ac16cbc2263018325ce4227",
+      "createdAt": "2026-11-26T23:32:33.414Z",
+      "activatedAt": "2026-11-26T23:32:33.414Z"
+    },
+    {
       "id": "USER-e05479f1f6335604440724da",
       "fullName": "Elizabeth Aduragbemi Yusuf",
       "username": "lizbeth",
