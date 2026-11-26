@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e05479f1f6335604440724da",
+      "fullName": "Elizabeth Aduragbemi Yusuf",
+      "username": "lizbeth",
+      "email": "elizabethaduragbemi2@gmail.com",
+      "phone": "08119428355",
+      "passwordHash": "655874212b1f183cb587cef1a7377ca5:072903e6525289eaa9f92be8f46ca99aa6df5148749a55954fd4b8f6f364cfaae382b0d308778dcec8b67b82f133fdb5f3de6af3f4624df30d64b5457ba96586",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-e13b01d52ed6b7de726d8446",
+      "createdAt": "2026-11-26T22:43:10.653Z",
+      "activatedAt": "2026-11-26T22:43:10.653Z"
+    },
+    {
       "id": "USER-a4b43e49b65b5ef498b07374",
       "fullName": "Esther Danladi",
       "username": "justtega24",
