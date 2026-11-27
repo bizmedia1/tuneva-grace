@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-83ead5d22d813d67a3a7a15f",
+      "fullName": "Abdullahi Saadatu",
+      "username": "abdullahi3467",
+      "email": "saadatuabdullahi@gmail.com",
+      "phone": "09052695243",
+      "passwordHash": "e1510cce105133dcf1bed49d2776745a:9ee03307aaccea0e5f21e11aec3ad65763256ffd7c320357f37bd88d94978200fb806562460b12dd9ef3ec2af8acb59f88a3db30a6206f039bcdecf2c1078ba0",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-b0575b58db531c4921d65dec",
+      "createdAt": "2026-11-27T19:24:06.370Z",
+      "activatedAt": "2026-11-27T19:24:06.370Z"
+    },
+    {
       "id": "USER-f0a98b3ed66cbc9e4026042b",
       "fullName": "Egujie miracle",
       "username": "miracle",
