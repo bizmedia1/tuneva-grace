@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-427bc5e4e5cbf265a5012f89",
+      "fullName": "Akere Victoria",
+      "username": "victoria",
+      "email": "akerevictoria6@gmail.com",
+      "phone": "09052981529",
+      "passwordHash": "a4b006f9dccda5b56fcfca765bf8fbb8:a18d9c3f7b6a1e510bd42291eb45ca1c3cd4c3497b304335e6be84877132925e1200e7f44600f975c13ef1c26a7614cc2d90156d2bca9a5ce299faa58996a8cc",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-4d5efeba1b8fb925b7191056",
+      "createdAt": "2026-11-27T08:09:31.086Z",
+      "activatedAt": "2026-11-27T08:09:31.086Z"
+    },
+    {
       "id": "USER-011251c3dbfe5524bc4061a7",
       "fullName": "James jemimah pwajok",
       "username": "jemma",
