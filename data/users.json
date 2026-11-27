@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-511e8255cb1f79929e3622f1",
+      "fullName": "Collins boy",
+      "username": "collins10",
+      "email": "collinsonuorah001@gmail.com",
+      "phone": "08125443325",
+      "passwordHash": "133cd5458e335b57fd04cd5b545ff55c:cbc249ddb3de18e330ed198dabbc889468b3ba7d36c17a33b4084dbfde2daa0fa68aaf7d19ec6842c96da469e97732d476f5bc85ecf403b18cf00de0a236aebf",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-b404d21997a2a6f91e26736f",
+      "createdAt": "2026-11-27T14:04:04.943Z",
+      "activatedAt": "2026-11-27T14:04:04.943Z"
+    },
+    {
       "id": "USER-f8e35c4ea0f87766ac4bb967",
       "fullName": "Peter favour",
       "username": "favour",
