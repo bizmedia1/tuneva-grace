@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-5477bde032971f842de2a046",
+      "fullName": "Amarachi mary",
+      "username": "mary001",
+      "email": "amarachimary36@gmail.com",
+      "phone": "09135450424",
+      "passwordHash": "1d8d0c256341d394c94699e34bdbcf9e:ddcdd35c8c34a10d859bf186930718ec7df1c7cc3f52c5116dbdf7af61f70cd815248ba4e473e554c59300369fa5a55b4d2ac091c263a3502291d8141d27a74c",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-b3e1da891290e3b86b23d619",
+      "createdAt": "2026-11-27T11:45:43.219Z",
+      "activatedAt": "2026-11-27T11:45:43.219Z"
+    },
+    {
       "id": "USER-c8967b51e9b80602bddeab81",
       "fullName": "Emmanuel Testimony",
       "username": "tescoboy",
