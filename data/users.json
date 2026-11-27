@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-d3c42f4acaaaa0ee21a9ae38",
+      "fullName": "Isaac Glory",
+      "username": "smile123",
+      "email": "isaacglory512@gmail.com",
+      "phone": "09131009593",
+      "passwordHash": "9eacf51eb128197b5ae60963c760847b:7a2948321d9f44d463dd0fbbe9af7f695eda58f8554d86c3b2f5ad6ae4336582742837c021a5a570f7b130c977f8cdf149ea8c8a863de50ed93f88f9531cb380",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7d7ff988f870457008cb9356",
+      "createdAt": "2026-11-27T09:54:10.906Z",
+      "activatedAt": "2026-11-27T09:54:10.906Z"
+    },
+    {
       "id": "USER-aa1ad277aa4f7db8a407f2e3",
       "fullName": "Chinelo  Chinelo",
       "username": "chinelo",
