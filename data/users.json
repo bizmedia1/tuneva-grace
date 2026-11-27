@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-f0a98b3ed66cbc9e4026042b",
+      "fullName": "Egujie miracle",
+      "username": "miracle",
+      "email": "egujier@gmail.com",
+      "phone": "08026179650",
+      "passwordHash": "74637bb10cbad5a7ba8521f975b472aa:31548d5194a68ad9d9200f67160d2e403fa3c6f445400fda8fe837e87bf4c3686390fe94368bbd133771354200ea818372e257878ce0166c51da0c96c09fd24c",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-83e474f2b4cc85260fef3e7c",
+      "createdAt": "2026-11-27T15:55:10.178Z",
+      "activatedAt": "2026-11-27T15:55:10.178Z"
+    },
+    {
       "id": "USER-511e8255cb1f79929e3622f1",
       "fullName": "Collins boy",
       "username": "collins10",
