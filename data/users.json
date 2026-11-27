@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-011251c3dbfe5524bc4061a7",
+      "fullName": "James jemimah pwajok",
+      "username": "jemma",
+      "email": "jemimahpwajok6@gmail.com",
+      "phone": "07048249397",
+      "passwordHash": "ca8ac512245935f0f460894712967dc8:5499a8066fc9c6607c99758db8d14d0d0859e710a395f66303126b99f38c2529a263a80a7940936a4429f7eb37be525b154f8dc7aa70de90243a2d43a5d21ce8",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-46e96557334600a33c79b388",
+      "createdAt": "2026-11-27T08:06:44.046Z",
+      "activatedAt": "2026-11-27T08:06:44.046Z"
+    },
+    {
       "id": "USER-1695ff248e6593d22b0aaab8",
       "fullName": "Oladapo Abimbola",
       "username": "abby",
