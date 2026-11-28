@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-e6c1c26210cbffa65c8c0b95",
+      "fullName": "Ebunoluwa Ruth",
+      "username": "taiwotiara",
+      "email": "taiwotiara840@gmail.com",
+      "phone": "09123051748",
+      "passwordHash": "29fe7c6aff609681769c5c16137e9478:3e7adb52446ceb5d910bfb341a7b68378f798864e84ee54aeb7971811b4ebac0dab21782a93ffff2c9475d673b7ead5c3c2c5ce8a45a8f1dd0fa0b2e2bdc553a",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-adb94148bfdb4c063f1dafc4",
+      "createdAt": "2026-11-28T07:28:29.744Z",
+      "activatedAt": "2026-11-28T07:28:29.744Z"
+    },
+    {
       "id": "USER-a4777541d7606c48841ad191",
       "fullName": "James Harry",
       "username": "james100",
