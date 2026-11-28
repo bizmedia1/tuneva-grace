@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-40710dad908727de37834a96",
+      "fullName": "Faith Michael",
+      "username": "faith001",
+      "email": "faithmichel587@gmail.com",
+      "phone": "08113868388",
+      "passwordHash": "c76a57a9f7c4c2b6410d8f4c5d3dfa7e:9c3af26609d2534abe7034def73b452382e2f75ee8d60671420cf872737758108b5832577351109e6f0c5d4e9e646f1efbfb91c2e5d2556762479f13961ae24c",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-1b5e899e546de6cd170b400d",
+      "createdAt": "2026-11-28T07:08:12.245Z",
+      "activatedAt": "2026-11-28T07:08:12.245Z"
+    },
+    {
       "id": "USER-a99302cd9d777065d07c7071",
       "fullName": "Elochukwu Patience",
       "username": "elopat76",
