@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a4777541d7606c48841ad191",
+      "fullName": "James Harry",
+      "username": "james100",
+      "email": "genesisobiezeh1@gmail.com",
+      "phone": "09071702528",
+      "passwordHash": "5375d716f929c2a2b694ea828eefc322:b0c4ffc9de4af62d79b8d850898b0a345e7aaa6ef60540641f21c07e5169c7b8a8c084eeaddf86584217217929631fed9644b59e72efb34f29646b76e33d6d17",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-7a7d614f0e1b94115200201f",
+      "createdAt": "2026-11-28T07:13:26.743Z",
+      "activatedAt": "2026-11-28T07:13:26.743Z"
+    },
+    {
       "id": "USER-d933806bfea934b2139afa15",
       "fullName": "Imadonmwonyi Evans",
       "username": "imadonmwonyi12",
