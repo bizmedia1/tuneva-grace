@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "USER-a026ff3d34a923211dc27e12",
+      "fullName": "Moses oruasah",
+      "username": "mosesweill",
+      "email": "mosesoruasah123@gmail.com",
+      "phone": "08160220116",
+      "passwordHash": "15fb805cab473b4e5605cd38eb31b994:981f4271d916b9a88418b7047663d3e0ad86a19627f99e98d63aa404dcbcd9694b020929b98ba88c1f2fb4ebe8cdd0804ca63fa07f6b51cf0f64219b07043bf3",
+      "status": "active",
+      "paymentId": "PAY-TUNEVA-712d360e412df5fe284ed044",
+      "createdAt": "2026-11-28T10:20:22.646Z",
+      "activatedAt": "2026-11-28T10:20:22.646Z"
+    },
+    {
       "id": "USER-d000aa01f623622bfb7f85e8",
       "fullName": "Omowunmi  shukurat",
       "username": "ademide",
